@@ -83,6 +83,6 @@ public class ModUndeadClientProxy extends ModUndeadCommonProxy
 
 		
 		RenderEngine renderengine = Minecraft.getMinecraft().renderEngine;
-        renderengine.registerTextureFX(new ModUndeadTextureInfernoFlamesFX(1));
+        renderengine.registerTextureFX(new ModUndeadTextureInfernoFlamesFX(1)); //This doesn't work!~
     }
 }
