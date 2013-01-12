@@ -11,8 +11,8 @@ public class ModUndeadPickupHandler implements IPickupNotifier
 	public void notifyPickup(EntityItem item, EntityPlayer player) 
 	{
 
-		if(item.entityId == ModUndeadMainRegistry.immortiumShard.shiftedIndex)
-		{
+		if(item.func_92014_d().itemID == ModUndeadMainRegistry.immortiumShard.shiftedIndex)
+		{		
 			player.addStat(ModUndeadMainRegistry.immortiumMine, 1);
 		}
 	}

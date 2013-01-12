@@ -458,6 +458,7 @@ public class ModUndeadEntityHellHound extends EntityTameable
 						setOwner(par1EntityPlayer.username);
 						playTameEffect(true);
 						worldObj.setEntityState(this, (byte)7);
+						par1EntityPlayer.triggerAchievement(ModUndeadMainRegistry.hellHoundTame);
 					}
 					else
 					{
