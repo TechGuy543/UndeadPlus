@@ -2,13 +2,17 @@ package techguy.mods.undead.client;
 
 import techguy.mods.undead.common.ModUndeadEntityHellHound;
 import techguy.mods.undead.common.ModUndeadEntityTamedZombie;
+import techguy.mods.undead.common.ModUndeadGraveDimensionTeleporter;
 import techguy.mods.undead.common.ModUndeadMainRegistry;
 import techguy.mods.undead.common.ModUndeadTileEntitySummoningTable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 
 public class ModUndeadGuiSummoningTable extends GuiScreen
@@ -102,6 +106,8 @@ public class ModUndeadGuiSummoningTable extends GuiScreen
 
 				world.playSoundAtEntity(entityPlayer, "undeadPlusAudio.misc.summon", 1.0F, 1.0F * 1.0F + 1.0F);
 			}
+
+			
 		}
 
 

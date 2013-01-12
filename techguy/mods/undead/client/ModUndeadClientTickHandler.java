@@ -87,19 +87,19 @@ public class ModUndeadClientTickHandler implements ITickHandler
 
 	}
 
-	int majorVersion = 4;
-	int minorVersion = 1;
-	int build = 5;
+	int majorVersion = 0;
+	int minorVersion = 9;
+	int build = 8;
 
 	int retrievedMajorVersion;
 	int retrievedMinorVersion;
-	int retrievedBuild = 0;
+	int retrievedBuild;
 
 	public void versionCheck() 
 	{
 
 		try {
-			URL url = new URL("http:/" + "/undeadplusversion.webs.com/index.html");
+			URL url = new URL("http://undeadplusversion.webs.com/index.html");
 
 			BufferedReader in = new BufferedReader(new InputStreamReader(
 					url.openStream()));
@@ -112,56 +112,54 @@ public class ModUndeadClientTickHandler implements ITickHandler
 					if (matcher.find())
 						retrievedMajorVersion = Integer.parseInt(matcher.group(0)
 								.substring(13));
-					break;
+
+					Pattern pat2 = Pattern.compile("minorVersion=\\d+");
+					while ((str = in.readLine()) != null) {
+						if (str.contains("minorVersion")) {
+							matcher = pat2.matcher(str);
+							if (matcher.find())
+								retrievedMinorVersion = Integer.parseInt(matcher.group(0)
+										.substring(13));
+
+							Pattern pat3 = Pattern.compile("build=\\d+");
+							while ((str = in.readLine()) != null) {
+								if (str.contains("build")) {
+									matcher = pat3.matcher(str);
+									if (matcher.find())
+										retrievedBuild = Integer.parseInt(matcher.group(0)
+												.substring(6));
+									break;
+								}
+							}
+						}
+					}
 				}
 
 			}
 
-			Pattern pat2 = Pattern.compile("minorVersion=\\d+");
-			Matcher matcher2;
-			String str2;
-			while ((str2 = in.readLine()) != null) {
-				if (str2.contains("minorVersion")) {
-					matcher2 = pat2.matcher(str2);
-					if (matcher2.find())
-						retrievedMinorVersion = Integer.parseInt(matcher2.group(0)
-								.substring(29));
-					break;
-				}
+			/*try {
+				URL url2 = new URL("http://undeadplusversion.webs.com/index.html");
 
-			}
+				BufferedReader in2 = new BufferedReader(new InputStreamReader(
+						url2.openStream()));
+				Pattern pat2 = Pattern.compile("minorVersion=\\d+");
+				Matcher matcher2;
+				String str2;
+				while ((str2 = in2.readLine()) != null) {
+					if (str2.contains("minorVersion")) {
+						matcher2 = pat2.matcher(str2);
+						if (matcher2.find())
+							retrievedMinorVersion = Integer.parseInt(matcher2.group(0)
+									.substring(29));
+						break;
+					}
 
-			Pattern pat3 = Pattern.compile("build=\\d+");
-			Matcher matcher3;
-			String str3;
-			while ((str3 = in.readLine()) != null) {
-				if (str3.contains("build")) {
-					matcher3 = pat3.matcher(str3);
-					if (matcher3.find())
-						retrievedBuild = Integer.parseInt(matcher3.group(0)
-								.substring(38));
-					break;
-				}
+				}*/
 
-			}
 
-			System.out.println("Major:" + retrievedMajorVersion);
-			System.out.println("Minor:" + retrievedMinorVersion);
-			System.out.println("Build:" + retrievedBuild);
-			/*if (build < retrievedBuild) {   
-				Minecraft.getMinecraft().thePlayer.addChatMessage("[Undead+] There is a new version of Undead+ available! New Version: 0." + retrievedBuild);
-				System.out.println("Undead+ Update Check - ret>cur");
-			}
-
-			if (build > retrievedBuild) {
-				Minecraft.getMinecraft().thePlayer.addChatMessage("[Undead+] You have a pre-release version! Current Public Build: 0." + retrievedBuild);
-				System.out.println("Undead+ Update Check - ret<cur");
-			}
-
-			if (build == retrievedBuild) {
-				Minecraft.getMinecraft().thePlayer.addChatMessage("[Undead+] Undead+ is up to date! Version: " + retrievedBuild);
-				System.out.println("Undead+ Update Check = ret=cur");
-			}*/
+			//System.out.println("Major:" + retrievedMajorVersion);
+			//System.out.println("Minor:" + retrievedMinorVersion);
+			//System.out.println("Build:" + retrievedBuild);
 
 			in.close();
 
@@ -177,7 +175,27 @@ public class ModUndeadClientTickHandler implements ITickHandler
 			e.printStackTrace();
 			Minecraft.getMinecraft().thePlayer.addChatMessage("[Undead+] Update Check Failed!");
 			System.out.println("Undead+ Update Check Failure - NumberFormatException");
+		}  catch (IndexOutOfBoundsException e){
+			e.printStackTrace();
+			Minecraft.getMinecraft().thePlayer.addChatMessage("[Undead+] Update Check Failed!");
+			System.out.println("Undead+ Update Check Failure - IndexOutOfBoundsException");
 		}
+		
+		if (build < retrievedBuild) {   
+			Minecraft.getMinecraft().thePlayer.addChatMessage("[Undead+] There is a new version of Undead+ available! New Version: 0." + retrievedBuild);
+			System.out.println("Undead+ Update Check - ret>cur");
+		}
+
+		if (build > retrievedBuild) {
+			Minecraft.getMinecraft().thePlayer.addChatMessage("[Undead+] You have a pre-release version! Current Public Build: 0." + retrievedBuild);
+			System.out.println("Undead+ Update Check - ret<cur");
+		}
+
+		if (build == retrievedBuild) {
+			Minecraft.getMinecraft().thePlayer.addChatMessage("[Undead+] Undead+ is up to date! Version: " + retrievedBuild);
+			System.out.println("Undead+ Update Check = ret=cur");
+		}
+
 	}
 
 	public void checkArmour()
