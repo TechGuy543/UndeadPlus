@@ -87,7 +87,7 @@ public class ModUndeadClientTickHandler implements ITickHandler
 
 	}
 
-	int majorVersion = 0;
+	int majorVersion = 1;
 	int minorVersion = 9;
 	int build = 8;
 
@@ -180,20 +180,24 @@ public class ModUndeadClientTickHandler implements ITickHandler
 			Minecraft.getMinecraft().thePlayer.addChatMessage("[Undead+] Update Check Failed!");
 			System.out.println("Undead+ Update Check Failure - IndexOutOfBoundsException");
 		}
-		
-		if (build < retrievedBuild) {   
-			Minecraft.getMinecraft().thePlayer.addChatMessage("[Undead+] There is a new version of Undead+ available! New Version: 0." + retrievedBuild);
+
+		if (build < retrievedBuild || minorVersion < retrievedMinorVersion || majorVersion < retrievedMajorVersion) {   
+			Minecraft.getMinecraft().thePlayer.addChatMessage("\u00A76[Undead+] \u00A7fThere is a new version available!");
+			Minecraft.getMinecraft().thePlayer.addChatMessage("Current Version: " + majorVersion + "." + minorVersion + "." +  build);
+			Minecraft.getMinecraft().thePlayer.addChatMessage("New Version: " + retrievedMajorVersion + "." + retrievedMinorVersion + "." + retrievedBuild);
 			System.out.println("Undead+ Update Check - ret>cur");
 		}
 
-		if (build > retrievedBuild) {
-			Minecraft.getMinecraft().thePlayer.addChatMessage("[Undead+] You have a pre-release version! Current Public Build: 0." + retrievedBuild);
+		/*if (build > retrievedBuild || minorVersion > retrievedMinorVersion || majorVersion > retrievedMajorVersion) {
+			Minecraft.getMinecraft().thePlayer.addChatMessage("\u00A7b[Undead+] \u00A7fYou have a pre-release version!");
+			Minecraft.getMinecraft().thePlayer.addChatMessage("Version: " + majorVersion + "." + minorVersion + "." + build);
 			System.out.println("Undead+ Update Check - ret<cur");
-		}
+		}*/
 
-		if (build == retrievedBuild) {
-			Minecraft.getMinecraft().thePlayer.addChatMessage("[Undead+] Undead+ is up to date! Version: " + retrievedBuild);
-			System.out.println("Undead+ Update Check = ret=cur");
+		if (build == retrievedBuild && minorVersion == retrievedMinorVersion && majorVersion == retrievedMajorVersion) {
+			Minecraft.getMinecraft().thePlayer.addChatMessage("\u00A72[Undead+] \u00A7fUndead+ is up to date!");
+			Minecraft.getMinecraft().thePlayer.addChatMessage("Version: " + retrievedMajorVersion + "." + retrievedMinorVersion + "." + retrievedBuild);
+			System.out.println("Undead+ Update Check - ret=cur");
 		}
 
 	}
