@@ -35,12 +35,6 @@ public class ModUndeadEntityVent extends EntityMob
 		return Item.gunpowder.shiftedIndex;
 	}
 
-	protected void dropRareDrop(int i)
-	{
-		dropItem(Potion.poison.id, 1);
-	}
-
-
 	public boolean attackEntityFrom(DamageSource damagesource, int i)
 	{
 		return super.attackEntityFrom(damagesource, i);
@@ -59,7 +53,6 @@ public class ModUndeadEntityVent extends EntityMob
 			EntityPlayer var2 = (EntityPlayer)damagesource.getEntity();
 			var2.triggerAchievement(ModUndeadMainRegistry.ventKill);
 		}
-
 		super.onDeath(damagesource);
 	}
 
