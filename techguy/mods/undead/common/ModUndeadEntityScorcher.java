@@ -15,6 +15,7 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.item.Item;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
@@ -107,13 +108,15 @@ public class ModUndeadEntityScorcher extends EntityMob
 		}
 	}
 
-	public void onDeath(DamageSource par1)
+	public void onDeath(DamageSource damagesource)
 	{
-		super.onDeath(par1);
-		if(par1.getEntity() instanceof EntityPlayer)
+		if (damagesource.getEntity() instanceof EntityPlayer)
 		{
-			Minecraft.getMinecraft().thePlayer.addStat(ModUndeadMainRegistry.scorcherKill, 1);
+			EntityPlayer var2 = (EntityPlayer)damagesource.getEntity();
+			var2.triggerAchievement(ModUndeadMainRegistry.scorcherKill);
 		}
+
+		super.onDeath(damagesource);
 	}
 
 	private Minecraft mc;

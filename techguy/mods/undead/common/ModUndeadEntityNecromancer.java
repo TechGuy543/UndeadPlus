@@ -44,7 +44,7 @@ public class ModUndeadEntityNecromancer extends EntityMob
      */
     protected String getLivingSound()
     {
-        return "mob.blaze.breathe";
+        return "undeadPlusAudio.mob.necromancer.groan";
     }
 
     /**
@@ -52,7 +52,7 @@ public class ModUndeadEntityNecromancer extends EntityMob
      */
     protected String getHurtSound()
     {
-        return "mob.blaze.hit";
+        return "undeadPlusAudio.mob.necromancer.hit";
     }
 
     /**
@@ -60,7 +60,7 @@ public class ModUndeadEntityNecromancer extends EntityMob
      */
     protected String getDeathSound()
     {
-        return "mob.blaze.death";
+        return "undeadPlusAudio.mob.necromancer.die";
     }
 
     /**
@@ -69,15 +69,6 @@ public class ModUndeadEntityNecromancer extends EntityMob
      */
     public void onLivingUpdate()
     {
-        if (!this.worldObj.isRemote)
-        {
-          
-            if (this.getEntityToAttack() != null && this.getEntityToAttack().posY + (double)this.getEntityToAttack().getEyeHeight() > this.posY + (double)this.getEyeHeight() + (double)this.heightOffset)
-            {
-                this.motionY += (0.30000001192092896D - this.motionY) * 0.30000001192092896D;
-            }
-        }
-
        super.onLivingUpdate();
     }
 
@@ -135,10 +126,6 @@ public class ModUndeadEntityNecromancer extends EntityMob
             this.hasAttacked = true;
         }
     }
-
-    /**
-     * Called when the mob is falling. Calculates and applies fall damage.
-     */
 
     /**
      * Returns the item ID for the item the mob drops on death.

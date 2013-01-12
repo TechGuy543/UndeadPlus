@@ -11,6 +11,7 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -123,6 +124,13 @@ public class ModUndeadEntityRotter extends EntityMob
 				entitymaggot.setLocationAndAngles(posX, posY + 0.5D, posZ, rand.nextFloat() * 360F, 0.0F);
 				worldObj.spawnEntityInWorld(entitymaggot);
 		}
+		
+			if (par1.getEntity() instanceof EntityPlayer)
+			{
+				EntityPlayer var2 = (EntityPlayer)par1.getEntity();
+				var2.triggerAchievement(ModUndeadMainRegistry.rotterKill);
+			}
+
 
 		super.onDeath(par1);
 	}

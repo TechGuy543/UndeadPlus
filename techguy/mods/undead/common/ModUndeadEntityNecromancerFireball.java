@@ -1,5 +1,6 @@
 package techguy.mods.undead.common;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.util.DamageSource;
@@ -36,38 +37,6 @@ public class ModUndeadEntityNecromancerFireball extends EntitySmallFireball
                 if (!movingobjectposition.entityHit.isImmuneToFire() && movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeFireballDamage(this, shootingEntity), 2))
                 {
                     movingobjectposition.entityHit.setFire(5);
-                }
-            }
-            else
-            {
-                int i = movingobjectposition.blockX;
-                int j = movingobjectposition.blockY;
-                int k = movingobjectposition.blockZ;
-                switch (movingobjectposition.sideHit)
-                {
-                    case 1:
-                        j++;
-                        break;
-
-                    case 0:
-                        j--;
-                        break;
-
-                    case 2:
-                        k--;
-                        break;
-
-                    case 3:
-                        k++;
-                        break;
-
-                    case 5:
-                        i++;
-                        break;
-
-                    case 4:
-                        i--;
-                        break;
                 }
             }
             setDead();

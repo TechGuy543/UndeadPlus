@@ -4,10 +4,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
+import net.minecraft.stats.AchievementList;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -50,19 +52,17 @@ public class ModUndeadEntityVent extends EntityMob
 		entitypotion.posY = posY + (double)(height) + 0.5D;
 		worldObj.spawnEntityInWorld(new EntityPotion(worldObj, this, 16388));
 
-		if(damagesource.getEntity() instanceof EntityPlayer)
-		{
-			Minecraft.getMinecraft().thePlayer.triggerAchievement(ModUndeadMainRegistry.ventKill);
-		}
-		super.onDeath(damagesource);
+		//Minecraft.getMinecraft().thePlayer.triggerAchievement(ModUndeadMainRegistry.ventKill);
 
+		if (damagesource.getEntity() instanceof EntityPlayer)
+		{
+			EntityPlayer var2 = (EntityPlayer)damagesource.getEntity();
+			var2.triggerAchievement(ModUndeadMainRegistry.ventKill);
+		}
+
+		super.onDeath(damagesource);
 	}
 
-	/** Random offset used in floating behaviour */
-	private float heightOffset = 0.5F;
-
-	/** ticks until heightOffset is randomized */
-	private int heightOffsetUpdateTime;
 	private int field_70846_g;
 
 
@@ -80,14 +80,6 @@ public class ModUndeadEntityVent extends EntityMob
 	 */
 	public void onLivingUpdate()
 	{
-		if (!this.worldObj.isRemote)
-		{
-
-			if (this.getEntityToAttack() != null && this.getEntityToAttack().posY + (double)this.getEntityToAttack().getEyeHeight() > this.posY + (double)this.getEyeHeight() + (double)this.heightOffset)
-			{
-				this.motionY += (0.30000001192092896D - this.motionY) * 0.30000001192092896D;
-			}
-		}
 
 		for (float i = 0.1F; i < 0.3F; i++)
 		{
@@ -138,6 +130,7 @@ public class ModUndeadEntityVent extends EntityMob
 					float var9 = MathHelper.sqrt_float(par2) * 0.5F;
 					this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1009, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
 
+					Minecraft mc = Minecraft.getMinecraft();
 					for (int var10 = 0; var10 < 1; ++var10)
 					{
 						ModUndeadEntityPoisonousBall var11 = new ModUndeadEntityPoisonousBall(this.worldObj, this, var3 + this.rand.nextGaussian() * (double)var9, var5, var7 + this.rand.nextGaussian() * (double)var9);
@@ -176,31 +169,31 @@ public class ModUndeadEntityVent extends EntityMob
 	/**
 	 * Checks to make sure the light is not too bright where the mob is spawning
 	 */
-	 protected boolean isValidLightLevel()
+	protected boolean isValidLightLevel()
 	{
 		return true;
 	}
 
-	 /**
-	  * Returns the amount of damage a mob should deal.
-	  */
-	 public int getAttackStrength(Entity par1Entity)
-	 {
-		 return 6;
-	 }
+	/**
+	 * Returns the amount of damage a mob should deal.
+	 */
+	public int getAttackStrength(Entity par1Entity)
+	{
+		return 6;
+	}
 
-	 protected String getLivingSound()
-	 {
-		 return "undeadPlusAudio.mobs.vent.growl";
-	 }
+	protected String getLivingSound()
+	{
+		return "undeadPlusAudio.mobs.vent.growl";
+	}
 
-	 protected String getHurtSound()
-	 {
-		 return "undeadPlusAudio.mobs.vent.hit";
-	 }
+	protected String getHurtSound()
+	{
+		return "undeadPlusAudio.mobs.vent.hit";
+	}
 
-	 protected String getDeathSound()
-	 {
-		 return "undeadPlusAudio.mobs.vent.die";
-	 }
+	protected String getDeathSound()
+	{
+		return "undeadPlusAudio.mobs.vent.die";
+	}
 }

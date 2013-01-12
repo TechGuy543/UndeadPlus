@@ -17,6 +17,7 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -131,4 +132,16 @@ public class ModUndeadEntityCordie extends EntityMob
     {
     	return true;
     }
+    
+	public void onDeath(DamageSource damagesource)
+	{
+
+		if (damagesource.getEntity() instanceof EntityPlayer)
+		{
+			EntityPlayer var2 = (EntityPlayer)damagesource.getEntity();
+			var2.triggerAchievement(ModUndeadMainRegistry.cordieKill);
+		}
+
+		super.onDeath(damagesource);
+	}
 } 

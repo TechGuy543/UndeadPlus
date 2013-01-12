@@ -19,6 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -134,6 +135,18 @@ public class ModUndeadEntityFrostbite extends EntityMob
 			}
 		}
 		super.onLivingUpdate();
+	}
+	
+	public void onDeath(DamageSource damagesource)
+	{
+
+		if (damagesource.getEntity() instanceof EntityPlayer)
+		{
+			EntityPlayer var2 = (EntityPlayer)damagesource.getEntity();
+			var2.triggerAchievement(ModUndeadMainRegistry.frostbiteKill);
+		}
+
+		super.onDeath(damagesource);
 	}
 
 }

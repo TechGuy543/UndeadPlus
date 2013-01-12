@@ -14,7 +14,9 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.item.Item;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -107,5 +109,17 @@ public class ModUndeadEntityBrute extends EntityMob
     {
     	dropItem(Item.expBottle.shiftedIndex, 1);
     }
+    
+	public void onDeath(DamageSource damagesource)
+	{
+
+		if (damagesource.getEntity() instanceof EntityPlayer)
+		{
+			EntityPlayer var2 = (EntityPlayer)damagesource.getEntity();
+			var2.triggerAchievement(ModUndeadMainRegistry.bruteKill);
+		}
+
+		super.onDeath(damagesource);
+	}
 
 }
