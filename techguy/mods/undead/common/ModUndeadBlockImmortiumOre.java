@@ -18,7 +18,7 @@ public class ModUndeadBlockImmortiumOre extends Block
 
 	public int idDropped(int i, Random random, int j)
 	{
-		return ModUndeadMainRegistry.immortiumShard.shiftedIndex;
+		return ModUndeadMainRegistry.immortiumShard.itemID;
 	}
 	
 	public int quantityDropped(Random random)

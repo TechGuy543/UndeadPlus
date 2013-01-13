@@ -489,7 +489,7 @@ public class ModUndeadMainRegistry
 		GameRegistry.addSmelting(dreadWood.blockID, new ItemStack(Item.coal, 2, 1), 0.4F);
 		GameRegistry.addSmelting(volatiteOre.blockID, new ItemStack(volatiteIngot, 1), 0.6F);
 		GameRegistry.addSmelting(cyriteOre.blockID, new ItemStack(cyriteIngot, 1), 0.8F);
-		GameRegistry.addSmelting(maggotMeatRaw.shiftedIndex, new ItemStack(maggotMeatCooked, 1), 0.3F);
+		GameRegistry.addSmelting(maggotMeatRaw.itemID, new ItemStack(maggotMeatCooked, 1), 0.3F);
 
 		//GameRegistry.addRecipe(new ItemStack(cyriteHelmet, 2), new Object [] {"#", '#', Block.dirt});
 		//GameRegistry.addRecipe(new ItemStack(cyriteChestplate, 2), new Object [] {"##", '#', Block.dirt});

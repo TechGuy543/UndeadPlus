@@ -53,19 +53,19 @@ public class ModUndeadEntityRotter extends EntityMob
         int j = rand.nextInt(3 + i);
         for (int l = 0; l < j; l++)
         {
-            dropItem(Item.bone.shiftedIndex, 1);
+            dropItem(Item.bone.itemID, 1);
         }
 
         j = rand.nextInt(3 + i);
         for (int k = 0; k < j; k++)
         {
-            dropItem(Item.rottenFlesh.shiftedIndex, 1);
+            dropItem(Item.rottenFlesh.itemID, 1);
         }  
     }
     
     protected void dropRareDrop(int i)
     {
-    	dropItem(ModUndeadMainRegistry.rottenBone.shiftedIndex, 1);
+    	dropItem(ModUndeadMainRegistry.rottenBone.itemID, 1);
     }
     
     public EnumCreatureAttribute getCreatureAttribute()

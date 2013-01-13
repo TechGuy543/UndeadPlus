@@ -410,20 +410,20 @@ public class ModUndeadEntityHellHound extends EntityTameable
         int j = rand.nextInt(3 + i);
         for (int k = 0; k < j; k++)
         {
-            dropItem(Item.goldNugget.shiftedIndex, 1);
+            dropItem(Item.goldNugget.itemID, 1);
         }
 
         j = rand.nextInt(3 + i);
         for (int l = 0; l < j; l++)
         {
-            dropItem(Item.rottenFlesh.shiftedIndex, 1);
+            dropItem(Item.rottenFlesh.itemID, 1);
         }
 
     }
 	
 	protected void dropRareDrop(int i)
 	{
-		dropItem(Item.gunpowder.shiftedIndex, 1);
+		dropItem(Item.gunpowder.itemID, 1);
 	}
 	/**
 	 * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
@@ -434,7 +434,7 @@ public class ModUndeadEntityHellHound extends EntityTameable
 
 		if (!isTamed())
 		{
-			if (itemstack != null && itemstack.itemID == ModUndeadMainRegistry.rottenBone.shiftedIndex && !isAngry())
+			if (itemstack != null && itemstack.itemID == ModUndeadMainRegistry.rottenBone.itemID && !isAngry())
 			{
 				if (!par1EntityPlayer.capabilities.isCreativeMode)
 				{
@@ -494,7 +494,7 @@ public class ModUndeadEntityHellHound extends EntityTameable
 				}
 			}
 
-			if(itemstack != null && itemstack.itemID == ModUndeadMainRegistry.rottenBone.shiftedIndex)
+			if(itemstack != null && itemstack.itemID == ModUndeadMainRegistry.rottenBone.itemID)
 			{
 				heal(6);
 			}
@@ -645,8 +645,9 @@ public class ModUndeadEntityHellHound extends EntityTameable
 	}
 
 	@Override
-	public EntityAgeable func_90011_a(EntityAgeable var1) {
+	public EntityAgeable createChild(EntityAgeable var1) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

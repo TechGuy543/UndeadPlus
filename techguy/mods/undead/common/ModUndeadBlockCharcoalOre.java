@@ -20,7 +20,7 @@ public class ModUndeadBlockCharcoalOre extends Block
 	
 	public int idDropped(int i, Random random, int j)
 	{
-		return Item.coal.shiftedIndex;
+		return Item.coal.itemID;
 	}
 	
 	public int damageDropped(int i)

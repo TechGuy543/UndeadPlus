@@ -71,7 +71,7 @@ public class ModUndeadEntityCoolZombie extends EntityMob
 
     protected int getDropItemId()
     {
-        return Item.rottenFlesh.shiftedIndex;
+        return Item.rottenFlesh.itemID;
     }
 
     public EnumCreatureAttribute getCreatureAttribute()

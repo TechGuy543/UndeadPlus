@@ -86,7 +86,7 @@ public class ModUndeadEntityScorcher extends EntityMob
 
 	public int getDropItemId()
 	{
-		return Item.fireballCharge.shiftedIndex;
+		return Item.fireballCharge.itemID;
 	}
 
 	protected void dropRareDrop(int i)
@@ -94,16 +94,16 @@ public class ModUndeadEntityScorcher extends EntityMob
 		switch (this.rand.nextInt(4))
 		{
 		case 0:
-			this.dropItem(Item.plateChain.shiftedIndex, 1);
+			this.dropItem(Item.plateChain.itemID, 1);
 			break;
 		case 1:
-			this.dropItem(Item.helmetChain.shiftedIndex, 1);
+			this.dropItem(Item.helmetChain.itemID, 1);
 			break;
 		case 2:
-			this.dropItem(Item.legsChain.shiftedIndex, 1);
+			this.dropItem(Item.legsChain.itemID, 1);
 			break;
 		case 3:
-			this.dropItem(Item.bootsChain.shiftedIndex, 1);
+			this.dropItem(Item.bootsChain.itemID, 1);
 			break;
 		}
 	}

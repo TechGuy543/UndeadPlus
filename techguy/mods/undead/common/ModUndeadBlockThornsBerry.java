@@ -31,7 +31,7 @@ public class ModUndeadBlockThornsBerry extends Block
 
 	public int idDropped(int i, Random random, int j)
 	{
-		return ModUndeadMainRegistry.krelickBerry.shiftedIndex;
+		return ModUndeadMainRegistry.krelickBerry.itemID;
 	}
 	
 	public int quantityDropped(Random random)
@@ -127,7 +127,7 @@ public class ModUndeadBlockThornsBerry extends Block
 	 public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
 	{
 		ItemStack itemstack = par5EntityPlayer.inventory.getCurrentItem();
-		if(itemstack != null && itemstack.itemID == Item.shears.shiftedIndex)
+		if(itemstack != null && itemstack.itemID == Item.shears.itemID)
 		{
 				par1World.setBlockWithNotify(par2, par3, par4, ModUndeadMainRegistry.thorns.blockID);
 				itemstack.damageItem(1, par5EntityPlayer);

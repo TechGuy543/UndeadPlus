@@ -94,20 +94,20 @@ public class ModUndeadEntityBrute extends EntityMob
         int j = rand.nextInt(3 + i);
         for (int k = 0; k < j; k++)
         {
-            dropItem(Item.rottenFlesh.shiftedIndex, 1);
+            dropItem(Item.rottenFlesh.itemID, 1);
         }
 
         j = rand.nextInt(3 + i);
         for (int l = 0; l < j; l++)
         {
-            dropItem(Item.bone.shiftedIndex, 1);
+            dropItem(Item.bone.itemID, 1);
         }
         
     }
     
     public void dropRareDrop(int i)
     {
-    	dropItem(Item.expBottle.shiftedIndex, 1);
+    	dropItem(Item.expBottle.itemID, 1);
     }
     
 	public void onDeath(DamageSource damagesource)

@@ -32,7 +32,7 @@ public class ModUndeadEntityVent extends EntityMob
 
 	public int getDropItemId()
 	{
-		return Item.gunpowder.shiftedIndex;
+		return Item.gunpowder.itemID;
 	}
 
 	public boolean attackEntityFrom(DamageSource damagesource, int i)

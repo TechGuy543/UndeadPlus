@@ -54,7 +54,7 @@ public class ModUndeadEntityCordie extends EntityMob
 	{
 		ItemStack itemstack = entityplayer.inventory.getCurrentItem();
 		
-		if (itemstack != null && itemstack.itemID == Item.shears.shiftedIndex)
+		if (itemstack != null && itemstack.itemID == Item.shears.itemID)
 		{
 			setDead();
 			EntityZombie entityZombie = new EntityZombie(worldObj);
@@ -102,7 +102,7 @@ public class ModUndeadEntityCordie extends EntityMob
         int j = rand.nextInt(3 + i);
         for (int k = 0; k < j; k++)
         {
-            dropItem(Item.rottenFlesh.shiftedIndex, 1);
+            dropItem(Item.rottenFlesh.itemID, 1);
         }        
     }
     
@@ -111,7 +111,7 @@ public class ModUndeadEntityCordie extends EntityMob
         int j1 = rand.nextInt(3 + i);
         for (int l = 0; l < j1; l++)
         {
-            dropItem(ModUndeadMainRegistry.cordycepsFungus.shiftedIndex, 1);
+            dropItem(ModUndeadMainRegistry.cordycepsFungus.itemID, 1);
         }
     }
     

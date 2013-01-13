@@ -69,7 +69,7 @@ public class ModUndeadEntitySurvivor extends EntityCreature
 
 	protected int getDropItemId()
 	{
-		return Item.rottenFlesh.shiftedIndex;
+		return Item.rottenFlesh.itemID;
 	}
 
 

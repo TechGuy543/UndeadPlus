@@ -67,7 +67,7 @@ public class ModUndeadGraveDimensionTeleporter extends Teleporter
                 }
             }
 
-            par1Entity.setLocationAndAngles((double)var9, (double)var10, (double)var11, par1Entity.rotationYaw, 0.0F);
+            par1Entity.setLocationAndAngles((double)var9 + 5, (double)var10, (double)var11, par1Entity.rotationYaw, 0.0F);
             par1Entity.motionX = par1Entity.motionY = par1Entity.motionZ = 0.0D;
         }
     }
@@ -250,7 +250,7 @@ public class ModUndeadGraveDimensionTeleporter extends Teleporter
                 par1Entity.motionX = par1Entity.motionY = par1Entity.motionZ = 0.0D;
             }
 
-            par1Entity.setLocationAndAngles(var49, var25, var27, par1Entity.rotationYaw, par1Entity.rotationPitch);
+            par1Entity.setLocationAndAngles(var49 + 5, var25, var27, par1Entity.rotationYaw, par1Entity.rotationPitch);
             return true;
         }
         else

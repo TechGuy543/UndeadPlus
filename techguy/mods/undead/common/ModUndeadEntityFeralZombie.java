@@ -142,7 +142,7 @@ public class ModUndeadEntityFeralZombie extends EntityMob
     
     protected int getDropItemId()
     {
-        return Item.arrow.shiftedIndex;
+        return Item.arrow.itemID;
     }
     
     protected void dropRareDrop(int i)

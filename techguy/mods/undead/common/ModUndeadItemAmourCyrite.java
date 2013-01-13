@@ -62,11 +62,11 @@ public class ModUndeadItemAmourCyrite extends ItemArmor implements IArmorTexture
 
 	public String getArmorTextureFile(ItemStack itemstack)
 	{
-		if(itemstack.itemID == ModUndeadMainRegistry.cyriteHelmet.shiftedIndex || itemstack.itemID == ModUndeadMainRegistry.cyriteChestplate.shiftedIndex || itemstack.itemID == ModUndeadMainRegistry.cyriteBoots.shiftedIndex)
+		if(itemstack.itemID == ModUndeadMainRegistry.cyriteHelmet.itemID || itemstack.itemID == ModUndeadMainRegistry.cyriteChestplate.itemID || itemstack.itemID == ModUndeadMainRegistry.cyriteBoots.itemID)
 		{
 			return "/undeadPlus/misc/cyrite_1.png";
 		}
-		if(itemstack.itemID == ModUndeadMainRegistry.cyriteLeggings.shiftedIndex)
+		if(itemstack.itemID == ModUndeadMainRegistry.cyriteLeggings.itemID)
 		{
 			return "/undeadPlus/misc/cyrite_2.png";
 		}

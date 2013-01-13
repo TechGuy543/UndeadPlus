@@ -345,7 +345,7 @@ public class ModUndeadEntityTeleportationArrow extends Entity implements IProjec
                             }
                         }
 
-                        this.func_85030_a("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+                        this.playSound("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
 
                         if (!(var4.entityHit instanceof EntityEnderman))
                         {
@@ -376,7 +376,7 @@ public class ModUndeadEntityTeleportationArrow extends Entity implements IProjec
                     this.posX -= this.motionX / (double)var20 * 0.05000000074505806D;
                     this.posY -= this.motionY / (double)var20 * 0.05000000074505806D;
                     this.posZ -= this.motionZ / (double)var20 * 0.05000000074505806D;
-                    this.func_85030_a("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+                    this.playSound("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
                     this.inGround = true;
                     this.arrowShake = 7;
                     this.setIsCritical(false);
@@ -507,7 +507,7 @@ public class ModUndeadEntityTeleportationArrow extends Entity implements IProjec
 
             if (var2)
             {
-                this.func_85030_a("random.pop", 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+                this.playSound("random.pop", 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
                 par1EntityPlayer.onItemPickup(this, 1);
                 this.setDead();
             }

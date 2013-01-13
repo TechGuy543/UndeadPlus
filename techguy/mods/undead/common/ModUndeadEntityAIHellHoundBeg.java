@@ -95,7 +95,7 @@ public class ModUndeadEntityAIHellHoundBeg extends EntityAIBase
             return false;
         }
 
-        if (!theWolf.isTamed() && itemstack.itemID == Item.bone.shiftedIndex)
+        if (!theWolf.isTamed() && itemstack.itemID == Item.bone.itemID)
         {
             return true;
         }

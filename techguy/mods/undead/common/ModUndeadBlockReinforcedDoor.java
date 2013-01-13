@@ -129,7 +129,7 @@ public class ModUndeadBlockReinforcedDoor extends BlockDoor
 	 */
 	public int idDropped(int par1, Random par2Random, int par3)
 	{
-		return ModUndeadMainRegistry.reinforcedDoorItem.shiftedIndex;
+		return ModUndeadMainRegistry.reinforcedDoorItem.itemID;
 	}
 
 	/**

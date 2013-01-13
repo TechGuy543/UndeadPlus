@@ -58,13 +58,13 @@ public class ModUndeadEntityBuccaneer extends EntityMob
 		int j = rand.nextInt(3 + i);
 		for (int k = 0; k < j; k++)
 		{
-			dropItem(Item.goldNugget.shiftedIndex, 1);
+			dropItem(Item.goldNugget.itemID, 1);
 		}
 
 		j = rand.nextInt(3 + i);
 		for (int l = 0; l < j; l++)
 		{
-			dropItem(Item.fishRaw.shiftedIndex, 1);
+			dropItem(Item.fishRaw.itemID, 1);
 		}
 
 	}

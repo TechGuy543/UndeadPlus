@@ -220,7 +220,7 @@ public class ModUndeadEntityInferno extends EntityFlying implements IMob
 
 	protected int getDropItemId()
 	{
-		return Item.blazePowder.shiftedIndex;
+		return Item.blazePowder.itemID;
 	}
 
 	/**
@@ -232,14 +232,14 @@ public class ModUndeadEntityInferno extends EntityFlying implements IMob
 
 		for (int j = 0; j < i; j++)
 		{
-			dropItem(Item.fireballCharge.shiftedIndex, 1);
+			dropItem(Item.fireballCharge.itemID, 1);
 		}
 
 		i = rand.nextInt(3) + rand.nextInt(1 + par2);
 
 		for (int k = 0; k < i; k++)
 		{
-			dropItem(Item.blazePowder.shiftedIndex, 1);
+			dropItem(Item.blazePowder.itemID, 1);
 		}
 	}
 

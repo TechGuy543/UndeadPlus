@@ -20,7 +20,7 @@ public class ModUndeadBlockInferniteOre extends Block
 	
 	public int idDropped(int i, Random random, int j)
 	{
-		return Item.blazePowder.shiftedIndex;
+		return Item.blazePowder.itemID;
 	}
 	
 	public int quantityDropped(Random random)

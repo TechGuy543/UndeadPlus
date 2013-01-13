@@ -97,7 +97,7 @@ public class ModUndeadEntityMummy extends EntityMob
         int j = rand.nextInt(3 + i);
         for (int k = 0; k < j; k++)
         {
-            dropItem(Item.goldNugget.shiftedIndex, 1);
+            dropItem(Item.goldNugget.itemID, 1);
         }
         
         int j1 = rand.nextInt(3 + i);

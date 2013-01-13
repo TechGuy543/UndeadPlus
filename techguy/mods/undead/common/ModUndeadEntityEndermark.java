@@ -345,7 +345,7 @@ public class ModUndeadEntityEndermark extends EntityMob
 	 */
 	protected int getDropItemId()
 	{
-		return Item.enderPearl.shiftedIndex;
+		return Item.enderPearl.itemID;
 	}
 
 	/**

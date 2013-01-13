@@ -145,7 +145,7 @@ public class ModUndeadEntityCrawler extends EntityMob
     
     protected void dropRareDrop(int i)
     {
-    	dropItem(Item.rottenFlesh.shiftedIndex, 1);
+    	dropItem(Item.rottenFlesh.itemID, 1);
     }
 
 }

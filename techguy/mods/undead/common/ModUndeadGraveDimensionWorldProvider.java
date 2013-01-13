@@ -1,6 +1,7 @@
 package techguy.mods.undead.common;
 
 import net.minecraft.world.WorldProvider;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
 import cpw.mods.fml.relauncher.Side;
@@ -14,7 +15,7 @@ public class ModUndeadGraveDimensionWorldProvider extends WorldProvider
 	
     public void registerWorldChunkManager()
     {
-        this.worldChunkMgr = new WorldChunkManagerHell(ModUndeadMainRegistry.grave, 1.0F, 0.0F);
+        this.worldChunkMgr = new WorldChunkManagerHell(/*ModUndeadMainRegistry.grave*/BiomeGenBase.beach, 1.0F, 0.0F);
         //this.worldChunkMgr = new ModUndeadWorldChunkManagerGrave(ModUndeadMainRegistry.grave, 1.0F, 0.0F);
         this.isHellWorld = true;
         this.hasNoSky = true;

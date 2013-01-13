@@ -279,14 +279,14 @@ public class ModUndeadBlockGravePortal extends BlockPortal
 				EntityPlayerMP thePlayer = (EntityPlayerMP) entity;
 				if (entity.dimension != 70)
 				{
-					Minecraft.getMinecraft().thePlayer.timeInPortal = 100;
-					((EntityPlayer)MinecraftServer.getServer().getConfigurationManager().playerEntityList.get(0)).timeUntilPortal = 100;
+					Minecraft.getMinecraft().thePlayer.timeInPortal = 100000;
+					((EntityPlayer)MinecraftServer.getServer().getConfigurationManager().playerEntityList.get(0)).timeUntilPortal = 10000;
 					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 70 , new ModUndeadGraveDimensionTeleporter(thePlayer.mcServer.worldServerForDimension(70)));
 				}
 				else
 				{
-					Minecraft.getMinecraft().thePlayer.timeInPortal = 100;
-					((EntityPlayer)MinecraftServer.getServer().getConfigurationManager().playerEntityList.get(0)).timeUntilPortal = 100;
+					Minecraft.getMinecraft().thePlayer.timeInPortal = 10000;
+					((EntityPlayer)MinecraftServer.getServer().getConfigurationManager().playerEntityList.get(0)).timeUntilPortal = 10000;
 					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new ModUndeadGraveDimensionTeleporter(thePlayer.mcServer.worldServerForDimension(0)));
 				}
 			}

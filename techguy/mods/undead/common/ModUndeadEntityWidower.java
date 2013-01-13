@@ -136,12 +136,12 @@ public class ModUndeadEntityWidower extends EntityMob
 
     protected int getDropItemId()
     {
-        return Item.silk.shiftedIndex;
+        return Item.silk.itemID;
     }
 
     protected void dropRareDrop(int i)
     {
-            dropItem(Item.fermentedSpiderEye.shiftedIndex, 1);
+            dropItem(Item.fermentedSpiderEye.itemID, 1);
     }
 
     public boolean isOnLadder()

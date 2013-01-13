@@ -29,7 +29,7 @@ public class ModUndeadItemBoneBow extends ItemBow
 				|| EnchantmentHelper.getEnchantmentLevel(
 						Enchantment.infinity.effectId, par1ItemStack) > 0;
 
-						if (var5 || par3EntityPlayer.inventory.hasItem(Item.arrow.shiftedIndex)) {
+						if (var5 || par3EntityPlayer.inventory.hasItem(Item.arrow.itemID)) {
 							int var6 = this.getMaxItemUseDuration(par1ItemStack) - par4;
 							float var7 = var6 / 20.0F;
 							var7 = (var7 * var7 + var7 * 2.0F) / 3.0F;
@@ -79,7 +79,7 @@ public class ModUndeadItemBoneBow extends ItemBow
 								var8.canBePickedUp = 2;
 							} else {
 								par3EntityPlayer.inventory
-								.consumeInventoryItem(Item.arrow.shiftedIndex);
+								.consumeInventoryItem(Item.arrow.itemID);
 							}
 
 							if (!par2World.isRemote) {
@@ -115,7 +115,7 @@ public class ModUndeadItemBoneBow extends ItemBow
 	 */
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	{
-		if (par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.hasItem(ModUndeadMainRegistry.immortiumArrow.shiftedIndex))
+		if (par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.hasItem(ModUndeadMainRegistry.immortiumArrow.itemID))
 		{
 			par3EntityPlayer.setItemInUse(par1ItemStack, getMaxItemUseDuration(par1ItemStack));
 		}
@@ -136,7 +136,7 @@ public class ModUndeadItemBoneBow extends ItemBow
 	{
 		EntityPlayer entityplayer = (EntityPlayer)entity;
 		ItemStack itemstack1 = entityplayer.inventory.getCurrentItem();
-		if(entityplayer.isUsingItem() && itemstack1.itemID == ModUndeadMainRegistry.boneBow.shiftedIndex)
+		if(entityplayer.isUsingItem() && itemstack1.itemID == ModUndeadMainRegistry.boneBow.itemID)
 		{
 			int k = itemstack.getMaxItemUseDuration() - entityplayer.getItemInUseCount();
 			if (k >= 18) 

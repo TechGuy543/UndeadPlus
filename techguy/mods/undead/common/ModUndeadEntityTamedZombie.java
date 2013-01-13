@@ -115,7 +115,7 @@ public class ModUndeadEntityTamedZombie extends EntityTameable
 	{
 		ItemStack itemStack = par1EntityPlayer.inventory.getCurrentItem();
 
-		if (itemStack != null && itemStack.itemID == Item.rottenFlesh.shiftedIndex)
+		if (itemStack != null && itemStack.itemID == Item.rottenFlesh.itemID)
 		{
 			heal(6);
 			itemStack.stackSize--;
@@ -132,7 +132,7 @@ public class ModUndeadEntityTamedZombie extends EntityTameable
 		return super.interact(par1EntityPlayer);
 	}
 
-	public EntityAgeable func_90011_a(EntityAgeable var1) 
+	public EntityAgeable createChild(EntityAgeable var1) 
 	{
 		return null;
 	}

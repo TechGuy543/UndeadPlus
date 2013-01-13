@@ -100,7 +100,7 @@ public class ModUndeadEntityFrostbite extends EntityMob
 		int j = rand.nextInt(4 + i);
 		for (int k = 0; k < j; k++)
 		{
-			dropItem(Item.snowball.shiftedIndex, 1);
+			dropItem(Item.snowball.itemID, 1);
 		}
 	}
 

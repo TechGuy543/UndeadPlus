@@ -104,7 +104,7 @@ public class ModUndeadEntityFlare extends EntityMob
 
 	protected int getDropItemId()
 	{
-		return Item.arrow.shiftedIndex;
+		return Item.arrow.itemID;
 	}
 
 	protected void dropFewItems(boolean flag, int i)
@@ -112,13 +112,13 @@ public class ModUndeadEntityFlare extends EntityMob
 		int j = rand.nextInt(3 + i);
 		for (int k = 0; k < j; k++)
 		{
-			dropItem(Item.arrow.shiftedIndex, 1);
+			dropItem(Item.arrow.itemID, 1);
 		}
 
 		j = rand.nextInt(3 + i);
 		for (int l = 0; l < j; l++)
 		{
-			dropItem(Item.coal.shiftedIndex, 1);
+			dropItem(Item.coal.itemID, 1);
 		}
 	}
 

@@ -23,8 +23,8 @@ public class ModUndeadGuiSummoningTable extends GuiScreen
 	private Minecraft mc;
 	private World world;
 	private EntityPlayer entityPlayer;
-	int necronomicon = ModUndeadMainRegistry.necronomicon.shiftedIndex;
-	int immortiumShard = ModUndeadMainRegistry.immortiumShard.shiftedIndex;
+	int necronomicon = ModUndeadMainRegistry.necronomicon.itemID;
+	int immortiumShard = ModUndeadMainRegistry.immortiumShard.itemID;
 
 
 	public ModUndeadGuiSummoningTable(World world1, EntityPlayer entityPlayer1, Minecraft minecraft)

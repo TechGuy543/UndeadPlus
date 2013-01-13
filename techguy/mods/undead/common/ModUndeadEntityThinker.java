@@ -4,6 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIBreakDoor;
+import net.minecraft.entity.ai.EntityAIFleeSun;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMoveThroughVillage;
@@ -45,6 +46,7 @@ public class ModUndeadEntityThinker extends EntityMob
 		tasks.addTask(8, new EntityAIWander(this, moveSpeed));
 		tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 8F));
 		tasks.addTask(10, new EntityAILookIdle(this));
+        tasks.addTask(4, new EntityAIFleeSun(this, this.moveSpeed));
 		targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16F, 0, true));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 16F, 0, false));
@@ -67,14 +69,14 @@ public class ModUndeadEntityThinker extends EntityMob
 		int j = rand.nextInt(3 + i);
 		for (int k = 0; k < j; k++)
 		{
-			dropItem(Item.paper.shiftedIndex, 1);
+			dropItem(Item.paper.itemID, 1);
 		}
 		dropRareDrop(1);
 	}
 
 	protected void dropRareDrop(int i)
 	{
-		dropItem(Item.book.shiftedIndex, 1);
+		dropItem(Item.book.itemID, 1);
 	}
 
 	public void onDeath(DamageSource damagesource)

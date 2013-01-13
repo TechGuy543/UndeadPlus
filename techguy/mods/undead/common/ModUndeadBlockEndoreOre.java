@@ -20,6 +20,6 @@ public class ModUndeadBlockEndoreOre extends Block
 	
 	public int idDropped(int i, Random random, int j)
 	{
-		return Item.enderPearl.shiftedIndex;
+		return Item.enderPearl.itemID;
 	}
 }

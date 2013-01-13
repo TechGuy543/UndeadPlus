@@ -98,7 +98,7 @@ public class ModUndeadEntityMudman extends EntityMob
 		int j = rand.nextInt(4 + i);
 		for (int k = 0; k < j; k++)
 		{
-			dropItem(Item.clay.shiftedIndex, 1);
+			dropItem(Item.clay.itemID, 1);
 		}
 	}
 
@@ -107,19 +107,19 @@ public class ModUndeadEntityMudman extends EntityMob
 		Random random = new Random();
 		if(random.nextInt(4) == 0)
 		{
-			dropItem(Item.reed.shiftedIndex, 1);
+			dropItem(Item.reed.itemID, 1);
 		}
 		if(random.nextInt(4) == 1)
 		{
-			dropItem(Item.reed.shiftedIndex, 1);
+			dropItem(Item.reed.itemID, 1);
 		}		
 		if(random.nextInt(4) == 2)
 		{
-			dropItem(Item.reed.shiftedIndex, 1);
+			dropItem(Item.reed.itemID, 1);
 		}		
 		if(random.nextInt(4) == 3)
 		{
-			dropItem(Item.reed.shiftedIndex, 1);
+			dropItem(Item.reed.itemID, 1);
 		}
 	}
     

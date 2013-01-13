@@ -50,12 +50,12 @@ public class ModUndeadEntityGhoul extends EntityMob
 
 	public int getDropItemId()
 	{
-		return Item.gunpowder.shiftedIndex;
+		return Item.gunpowder.itemID;
 	}
 
 	protected void dropRareDrop(int i)
 	{
-		dropItem(Item.ghastTear.shiftedIndex, 1);
+		dropItem(Item.ghastTear.itemID, 1);
 	}
 
 	public void onLivingUpdate()

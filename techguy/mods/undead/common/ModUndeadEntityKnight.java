@@ -3,6 +3,7 @@ package techguy.mods.undead.common;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIBreakDoor;
+import net.minecraft.entity.ai.EntityAIFleeSun;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMoveThroughVillage;
@@ -15,6 +16,7 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -39,6 +41,7 @@ public class ModUndeadEntityKnight extends EntityMob
         tasks.addTask(6, new EntityAIWander(this, moveSpeed));
         tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8F));
         tasks.addTask(7, new EntityAILookIdle(this));
+        tasks.addTask(8, new EntityAIFleeSun(this, this.moveSpeed));
         targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16F, 0, true));
         targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 16F, 0, false));
@@ -51,7 +54,7 @@ public class ModUndeadEntityKnight extends EntityMob
 
 	public int getDropItemId()
 	{
-		return Item.ingotIron.shiftedIndex;
+		return Item.ingotIron.itemID;
 	}
 
 
@@ -137,7 +140,7 @@ public class ModUndeadEntityKnight extends EntityMob
     
     protected void dropRareDrop(int i)
     {
-    	this.dropItem(ModUndeadMainRegistry.volatiteIngot.shiftedIndex, 1);
+    	this.dropItem(ModUndeadMainRegistry.volatiteIngot.itemID, 1);
     }
 
     

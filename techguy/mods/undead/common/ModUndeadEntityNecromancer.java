@@ -132,7 +132,7 @@ public class ModUndeadEntityNecromancer extends EntityMob
      */
     protected int getDropItemId()
     {
-        return ModUndeadMainRegistry.necronomicon.shiftedIndex;
+        return ModUndeadMainRegistry.necronomicon.itemID;
     }
 
 

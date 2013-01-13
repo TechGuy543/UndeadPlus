@@ -135,7 +135,7 @@ public class ModUndeadEntityMaggot extends EntityMob
 
 	public int getDropItemId()
 	{
-		return ModUndeadMainRegistry.maggotMeatRaw.shiftedIndex;
+		return ModUndeadMainRegistry.maggotMeatRaw.itemID;
 	}
 
 	/*protected void dropRareDrop(int i)

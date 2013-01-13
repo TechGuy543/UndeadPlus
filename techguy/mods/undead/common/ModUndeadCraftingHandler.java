@@ -11,10 +11,9 @@ public class ModUndeadCraftingHandler implements ICraftingHandler
 	@Override
 	public void onCrafting(EntityPlayer player, ItemStack item,	IInventory craftMatrix) 
 	{
-		if(item.itemID == ModUndeadMainRegistry.crowbar.shiftedIndex)
+		if(item.itemID == ModUndeadMainRegistry.crowbar.itemID)
 		{
-			//player.triggerAchievement(ModUndeadMainRegistry.crowbarCraft);
-			player.addStat(ModUndeadMainRegistry.crowbarCraft, 1);
+			player.triggerAchievement(ModUndeadMainRegistry.crowbarCraft);
 		}
 		
 		if(item.itemID == ModUndeadMainRegistry.summoningTable.blockID)

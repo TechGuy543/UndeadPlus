@@ -62,11 +62,11 @@ public class ModUndeadItemAmourVolatite extends ItemArmor implements IArmorTextu
 
 	public String getArmorTextureFile(ItemStack itemstack)
 	{
-		if(itemstack.itemID == ModUndeadMainRegistry.volatiteHelmet.shiftedIndex || itemstack.itemID == ModUndeadMainRegistry.volatiteChestplate.shiftedIndex || itemstack.itemID == ModUndeadMainRegistry.volatiteBoots.shiftedIndex)
+		if(itemstack.itemID == ModUndeadMainRegistry.volatiteHelmet.itemID || itemstack.itemID == ModUndeadMainRegistry.volatiteChestplate.itemID || itemstack.itemID == ModUndeadMainRegistry.volatiteBoots.itemID)
 		{
 			return "/undeadPlus/misc/volatite_1.png";
 		}
-		if(itemstack.itemID == ModUndeadMainRegistry.volatiteLeggings.shiftedIndex)
+		if(itemstack.itemID == ModUndeadMainRegistry.volatiteLeggings.itemID)
 		{
 			return "/undeadPlus/misc/volatite_2.png";
 		}

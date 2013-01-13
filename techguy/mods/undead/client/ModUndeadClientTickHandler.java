@@ -226,7 +226,7 @@ public class ModUndeadClientTickHandler implements ITickHandler
 			return;
 		}
 
-		if(helmet.itemID == ModUndeadMainRegistry.volatiteHelmet.shiftedIndex && chestPlate.itemID == ModUndeadMainRegistry.volatiteChestplate.shiftedIndex && legs.itemID == ModUndeadMainRegistry.volatiteLeggings.shiftedIndex && boots.itemID == ModUndeadMainRegistry.volatiteBoots.shiftedIndex)
+		if(helmet.itemID == ModUndeadMainRegistry.volatiteHelmet.itemID && chestPlate.itemID == ModUndeadMainRegistry.volatiteChestplate.itemID && legs.itemID == ModUndeadMainRegistry.volatiteLeggings.itemID && boots.itemID == ModUndeadMainRegistry.volatiteBoots.itemID)
 		{
 			minecraft.thePlayer.removePotionEffect(Potion.poison.id);
 			minecraft.thePlayer.removePotionEffect(Potion.hunger.id);
