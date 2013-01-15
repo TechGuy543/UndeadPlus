@@ -256,7 +256,7 @@ public class ModUndeadGraveDimensionChunkProvider implements IChunkProvider
                         {
                             var13 = -1;
                         }
-                        else if (var18 == ModUndeadMainRegistry.dimStone.blockID)
+                        else if (var18 == (byte) ModUndeadMainRegistry.dimStone.blockID)
                         {
                             if (var13 == -1)
                             {

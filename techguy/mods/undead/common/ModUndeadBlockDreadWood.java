@@ -9,6 +9,9 @@ public class ModUndeadBlockDreadWood extends Block
 	public ModUndeadBlockDreadWood(int i, int j)
 	{
 		super(i, j, Material.wood);
+		setHardness(1.5F);
+		setStepSound(Block.soundWoodFootstep);
+		setCreativeTab(ModUndeadMainRegistry.undeadCreativeTab);
 	}
 
 	public int getBlockTextureFromSideAndMetadata(int i, int j)

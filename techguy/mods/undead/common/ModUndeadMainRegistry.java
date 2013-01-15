@@ -41,22 +41,21 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid="UndeadPlus", name="Undead+", version="[MC1.4.6] v1.0.0")
+@Mod(modid="UndeadPlus", name="Undead+", version="[MC1.4.7] v0.9.8")
 @NetworkMod
 (
 		clientSideRequired = true,
 		serverSideRequired = false,
 		channels = {"undead_plus"},
 		packetHandler = ModUndeadPacketHandler.class 
-		//connectionHandler = ConnectionHandler.class,//TODO
+		//connectionHandler = ConnectionHandler.class,TODO
 		)
 
 public class ModUndeadMainRegistry 
 {
-	 //@SidedProxy(clientSide = "techguy.mods.undead.client.ModUndeadClientProxy", serverSide = "techguy.mods.undead.common.ModUndeadCommonProxy")
-	 
+	//@SidedProxy(clientSide = "techguy.mods.undead.client.ModUndeadClientProxy", serverSide = "techguy.mods.undead.common.ModUndeadCommonProxy")
+
 	static Configuration config = new Configuration(new File(Minecraft.getMinecraftDir(), "/config/UndeadPlusConfig.cfg"));
-	public static CreativeTabs undeadCreativeTab = new ModUndeadCreativeTab("undeadPlusCreativeTab");
 
 	static int portalFrameID = configProp();
 	static int cordycepsFungusBlockID;
@@ -111,6 +110,7 @@ public class ModUndeadMainRegistry
 	static int cyriteHoeID;
 	public static int gravestoneRenderID;
 
+	public static CreativeTabs undeadCreativeTab = new ModUndeadCreativeTab("undeadPlusCreativeTab");
 	public static final Block portalFrame = new ModUndeadBlockGraveDimensionPortalFrame(portalFrameID, 3).setBlockName("portalFrameUDP").setCreativeTab(undeadCreativeTab).setHardness(1.5F).setResistance(10F);
 	public static final Block cordycepsFungusBlock = new ModUndeadBlockCordycepsFungus(cordycepsFungusBlockID, 47).setBlockName("cordycepsFungusBlockUDP");
 	public static final Block summoningTable = new ModUndeadBlockSummoningTable(summoningTableID, 0).setBlockName("summoningTableUDP").setCreativeTab(undeadCreativeTab).setHardness(4.2F).setResistance(10F);
@@ -183,11 +183,11 @@ public class ModUndeadMainRegistry
 	public static final Achievement frostbiteKill = new Achievement(1607, "undeadFrostbite", 17, 4, Item.diamond, install).registerAchievement();
 	public static final Achievement cordieKill = new Achievement(1608, "undeadCordie", 17, 6, Item.diamond, install).registerAchievement();
 	public static final Achievement ventKill = new Achievement(1609, "undeadVent", 17, 8, Item.diamond, install).registerAchievement();
-	
+
 	public static final Achievement crowbarCraft = new Achievement(1610, "undeadCrowbarCraft", 13, -2, crowbar, install).registerAchievement();
 	public static final Achievement immortiumMine = new Achievement(1611, "undeadImmortiumMine", 13, 2, immortiumShard, install).registerAchievement();
 	public static final Achievement summoningCraft = new Achievement(1612, "undeadSummoningCraft", 13, 4, summoningTable, immortiumMine).registerAchievement();
-	
+
 	//public static final Achievement rottenFlesh = new Achievement(1613, "undeadRottenFlesh", 15, 7, Item.diamond, null).registerAchievement();
 	//public static final Achievement oneMobDown = new Achievement(1614, "undeadOneMobDown", 15, 7, Item.diamond, null).registerAchievement();
 	//public static final Achievement allMobDown = new Achievement(1615, "undeadAllMobDown", 15, 7, Item.diamond, null).registerAchievement();
@@ -335,7 +335,7 @@ public class ModUndeadMainRegistry
 
 
 
-		GameRegistry.registerBlock(portalFrame);
+		//TODO GameRegistry.registerBlock(portalFrame);
 		LanguageRegistry.addName(portalFrame, "Portal Frame");
 		GameRegistry.addRecipe(new ItemStack(portalFrame, 1), new Object [] {"#$#", "$$$", "#$#", '#', Item.bone, '$', Item.rottenFlesh});
 
@@ -377,7 +377,7 @@ public class ModUndeadMainRegistry
 		GameRegistry.addRecipe(new ItemStack(Item.rottenFlesh, 4), new Object [] {"#", '#', rottenBone});
 
 
-		GameRegistry.registerBlock(infernoFlames);
+		//TODO GameRegistry.registerBlock(infernoFlames);
 		LanguageRegistry.addName(infernoFlames, "Inferno Flames");
 
 		LanguageRegistry.addName(boneBlade, "Bone Blade");
@@ -435,7 +435,7 @@ public class ModUndeadMainRegistry
 		GameRegistry.registerBlock(pyrose);
 		LanguageRegistry.addName(pyrose, "Pyrose");
 
-		GameRegistry.registerBlock(dimPortalBlock);
+		//TODO:GameRegistry.registerBlock(dimPortalBlock);
 		LanguageRegistry.addName(dimPortalBlock, "Grave Portal");
 
 		LanguageRegistry.addName(skullFragment, "Skull Fragment");
@@ -495,55 +495,55 @@ public class ModUndeadMainRegistry
 		//GameRegistry.addRecipe(new ItemStack(cyriteChestplate, 2), new Object [] {"##", '#', Block.dirt});
 
 		LanguageRegistry.instance().addStringLocalization("itemGroup.undeadPlusCreativeTab", "Undead+");
-		
+
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadInstall", "Awesome!");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadInstall.desc", "Install Undead+");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadHoundTame", "Sit! Stay!");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadHoundTame.desc", "Tame a Hell Hound");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadThinkerDoor", "Knock, Knock");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadThinkerDoor.desc", "Kill a Thinker After He Opens A Door");
-		
+
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadScorcher", "Extinguisher");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadScorcher.desc", "Kill a Scorcher");
-		
+
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadRotter", "Need a Hand?");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadRotter.desc", "Kill a Rotter");
-		
+
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadBrute", "The Harder They Fall");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadBrute.desc", "Kill a Brute");
-		
+
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadMummy", "Reverse The Curse");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadMummy.desc", "Kill a Mummy");
-		
+
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadFrostbite", "Chill Out!");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadFrostbite.desc", "Kill a Frostbite");
-		
+
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadVent", "That Smelly Smell...");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadVent.desc", "Kill a Vent");
-		
+
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadCordie", "Fun Guy");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadCordie.desc", "Kill a Cordie");
-		
+
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadCrowbarCraft", "A Free Man");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadCrowbarCraft.desc", "Craft a Crowbar");
-		
+
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadImmortiumMine", "Shard of Life");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadImmortiumMine.desc", "Collect an Immortium Shard");
-		
+
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadSummoningCraft", "Necromancer");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadSummoningCraft.desc", "Craft a Summoning Table");
-		
+
 		//LanguageRegistry.instance().addStringLocalization("achievement.undeadRottenFlesh", "Acquired Taste");
 		//LanguageRegistry.instance().addStringLocalization("achievement.undeadRottenFlesh.desc", "Eat Rotten Flesh While in Full Volatite Armor");
-		
+
 		//LanguageRegistry.instance().addStringLocalization("achievement.undeadOneMobDown", "One Down...");
 		//LanguageRegistry.instance().addStringLocalization("achievement.undeadOneMobDown.desc", "Kill One New Mob");
-		
+
 		//LanguageRegistry.instance().addStringLocalization("achievement.undeadAllMobDown", "Slayer");
 		//LanguageRegistry.instance().addStringLocalization("achievement.undeadAllMobDown.desc", "Kill One of Each New Mob");
-		
-		
-		
+
+
+
 		LanguageRegistry.instance().addStringLocalization("entity.UDInfected.name", "Infected Zombie");
 		LanguageRegistry.instance().addStringLocalization("entity.UDCool.name", "Cool Zombie");
 		LanguageRegistry.instance().addStringLocalization("entity.UDFeral.name", "Feral Zombie");

@@ -16,6 +16,9 @@ public class ModUndeadBlockSummoningTable extends BlockContainer
 	{
 		super(i, j, Material.rock);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.75F, 1.0F);
+		setCreativeTab(ModUndeadMainRegistry.undeadCreativeTab);
+		setHardness(4.2F);
+		setResistance(10F);
 	}
 
     public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)

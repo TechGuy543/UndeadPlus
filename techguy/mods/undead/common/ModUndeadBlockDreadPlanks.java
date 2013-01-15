@@ -9,6 +9,9 @@ public class ModUndeadBlockDreadPlanks extends Block
 	public ModUndeadBlockDreadPlanks(int i, int j)
 	{
 		super(i, j, Material.wood);
+		setCreativeTab(ModUndeadMainRegistry.undeadCreativeTab);
+		setHardness(1F);
+		setStepSound(Block.soundWoodFootstep);
 	}
 	
 	public String getTextureFile()

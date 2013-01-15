@@ -1,6 +1,7 @@
 package techguy.mods.undead.common;
 
 import techguy.mods.undead.client.ModUndeadColorizerGraveFoliage;
+import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;

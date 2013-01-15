@@ -19,6 +19,6 @@ final class ModUndeadCreativeTab extends CreativeTabs
      */
     public int getTabIconItemIndex()
     {
-        return ModUndeadMainRegistry.portalFrame.blockID;
+        return ModUndeadMainRegistry.necronomicon.itemID;
     }
 }

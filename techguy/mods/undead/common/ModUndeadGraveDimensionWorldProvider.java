@@ -15,7 +15,7 @@ public class ModUndeadGraveDimensionWorldProvider extends WorldProvider
 	
     public void registerWorldChunkManager()
     {
-        this.worldChunkMgr = new WorldChunkManagerHell(/*ModUndeadMainRegistry.grave*/BiomeGenBase.beach, 1.0F, 0.0F);
+        this.worldChunkMgr = new WorldChunkManagerHell(ModUndeadMainRegistry.grave, 1.0F, 0.0F);
         //this.worldChunkMgr = new ModUndeadWorldChunkManagerGrave(ModUndeadMainRegistry.grave, 1.0F, 0.0F);
         this.isHellWorld = true;
         this.hasNoSky = true;

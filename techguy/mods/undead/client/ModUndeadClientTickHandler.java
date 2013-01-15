@@ -87,7 +87,7 @@ public class ModUndeadClientTickHandler implements ITickHandler
 
 	}
 
-	int majorVersion = 1;
+	int majorVersion = 0;
 	int minorVersion = 9;
 	int build = 8;
 
