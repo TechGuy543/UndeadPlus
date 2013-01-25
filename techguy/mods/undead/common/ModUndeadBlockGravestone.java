@@ -45,10 +45,10 @@ public class ModUndeadBlockGravestone extends BlockContainer implements ISimpleB
 		return false;
 	}
 
-	public int getRenderType() 
+	/*public int getRenderType() 
 	{
 		return ModUndeadMainRegistry.gravestoneRenderID;
-	}
+	}*/
 
 	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving)
 	{

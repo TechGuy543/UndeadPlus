@@ -25,6 +25,7 @@ import techguy.mods.undead.common.ModUndeadEntityNecromancer;
 import techguy.mods.undead.common.ModUndeadEntityPoisonousBall;
 import techguy.mods.undead.common.ModUndeadEntityRotter;
 import techguy.mods.undead.common.ModUndeadEntityScorcher;
+import techguy.mods.undead.common.ModUndeadEntitySurvivor;
 import techguy.mods.undead.common.ModUndeadEntityTeleportationArrow;
 import techguy.mods.undead.common.ModUndeadEntityThinker;
 import techguy.mods.undead.common.ModUndeadEntityVent;
@@ -74,6 +75,7 @@ public class ModUndeadClientProxy extends ModUndeadCommonProxy
 		RenderingRegistry.instance().registerEntityRenderingHandler(ModUndeadEntityCrawler.class, new ModUndeadRenderCrawler(new ModUndeadModelCrawler(), 0.5F));
 		RenderingRegistry.instance().registerEntityRenderingHandler(ModUndeadEntityEndermark.class, new ModUndeadRenderEndermark(new ModUndeadModelEndermark(), 0.5F));
 		RenderingRegistry.instance().registerEntityRenderingHandler(ModUndeadEntityZkuba.class, new ModUndeadRenderZkuba(new ModUndeadModelZkuba(), 0.5F));
+		RenderingRegistry.instance().registerEntityRenderingHandler(ModUndeadEntitySurvivor.class, new RenderBiped(new ModelBiped(), 0.5F));
 
 		//RenderingRegistry.instance().registerEntityRenderingHandler(ModUndeadEntityTamedWidower.class, new ModUndeadRenderTamedWidower());
 		RenderingRegistry.instance().registerEntityRenderingHandler(ModUndeadEntityPoisonousBall.class, new ModUndeadRenderPoisonousBall(0.5F));

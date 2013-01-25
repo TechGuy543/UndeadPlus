@@ -8,7 +8,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class ModUndeadTileEntitySummoningTable extends TileEntity
 {
-	public int usesLeft;
+	public static int usesLeft;
 	
 	public void writeToNBT(NBTTagCompound par1NBTTagCompound)
 	{

@@ -3,6 +3,8 @@ package techguy.mods.undead.common;
 import java.io.File;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.block.BlockStep;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,10 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.src.ModLoader;
 import net.minecraft.stats.Achievement;
-import net.minecraft.stats.AchievementList;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.client.MinecraftForgeClient;
-import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.EnumHelper;
@@ -26,11 +25,11 @@ import techguy.mods.undead.client.ModUndeadClientProxy;
 import techguy.mods.undead.client.ModUndeadClientTickHandler;
 import techguy.mods.undead.client.ModUndeadPacketHandler;
 import techguy.mods.undead.client.ModUndeadRenderSummoningTable;
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.PostInit;
 import cpw.mods.fml.common.Mod.PreInit;
-import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -41,7 +40,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid="UndeadPlus", name="Undead+", version="[MC1.4.7] v0.9.8")
+@Mod(modid="UndeadPlus", name="Undead+", version="0.9.8")
 @NetworkMod
 (
 		clientSideRequired = true,
@@ -63,6 +62,8 @@ public class ModUndeadMainRegistry
 	static int gravestoneID;
 	static int dreadWoodID;
 	static int dreadPlanksID;
+	static int dreadPlankStairsID;
+	static int dreadPlankSlabsID;
 	static int reinforcedDoorID;
 	static int blueFlamesID;
 	static int immortiumOreID;
@@ -77,6 +78,8 @@ public class ModUndeadMainRegistry
 	static int thornsID;
 	static int krelickBushID;
 	static int pyroseID;
+	static int necrobaneFlowerID;
+	static int necrobaneTrailID;
 	static int portalBlockID;
 
 	static int necronomiconID;
@@ -108,7 +111,10 @@ public class ModUndeadMainRegistry
 	static int cyriteShovelID;
 	static int cyriteSwordID;
 	static int cyriteHoeID;
-	public static int gravestoneRenderID;
+	static int necrobaneAshID;
+
+
+
 
 	public static CreativeTabs undeadCreativeTab = new ModUndeadCreativeTab("undeadPlusCreativeTab");
 	public static final Block portalFrame = new ModUndeadBlockGraveDimensionPortalFrame(portalFrameID, 3).setBlockName("portalFrameUDP").setCreativeTab(undeadCreativeTab).setHardness(1.5F).setResistance(10F);
@@ -117,6 +123,8 @@ public class ModUndeadMainRegistry
 	//public static final Block gravestone = new ModUndeadBlockGravestone(gravestoneID, 0, net.minecraft.src.ModUndeadTileEntityGravestone.class).setBlockName("gravestoneUDP").setCreativeTab(tabBlock);
 	public static final Block dreadWood = new ModUndeadBlockDreadWood(dreadWoodID, 0).setBlockName("dreadWoodUDP").setHardness(1.5F).setStepSound(Block.soundWoodFootstep).setCreativeTab(undeadCreativeTab);
 	public static final Block dreadPlanks = new ModUndeadBlockDreadPlanks(dreadPlanksID, 32).setBlockName("dreadPlanksUDP").setCreativeTab(undeadCreativeTab).setHardness(1F).setStepSound(Block.soundWoodFootstep);
+	public static final Block dreadPlankStairs = new ModUndeadBlockDreadPlankStairs(dreadPlankStairsID, dreadPlanks, 0).setBlockName("dreadPlankStairsUDP").setHardness(1F).setCreativeTab(undeadCreativeTab);
+	public static final Block dreadPlankSlabs = new ModUndeadBlockHalfSlab(dreadPlankSlabsID, false).setBlockName("dreadPlankSlabsUDP").setCreativeTab(undeadCreativeTab);
 	public static final Block reinforcedDoor = new ModUndeadBlockReinforcedDoor(reinforcedDoorID, Material.rock).setBlockName("reinforcedDoorUDP").setRequiresSelfNotify();
 	public static final Block infernoFlames = new ModUndeadBlockBlueInfernoFire(blueFlamesID, 31).setBlockName("infernoFlamesUDP").setLightValue(1F).setCreativeTab(undeadCreativeTab);
 	public static final Block immortiumOre = new ModUndeadBlockImmortiumOre(immortiumOreID, 1).setBlockName("immortiumOreUDP").setCreativeTab(undeadCreativeTab).setHardness(2F);
@@ -131,6 +139,8 @@ public class ModUndeadMainRegistry
 	public static final Block thorns = new ModUndeadBlockThorns(thornsID, 63).setBlockName("thornsUDP").setStepSound(Block.soundGrassFootstep).setCreativeTab(undeadCreativeTab);
 	public static final Block thornsBerry = new ModUndeadBlockThornsBerry(krelickBushID, 79).setBlockName("thornsBerryUDP").setStepSound(Block.soundGrassFootstep).setCreativeTab(undeadCreativeTab);
 	public static final Block pyrose = new ModUndeadBlockPyrose(pyroseID, 95).setBlockName("pyroseUDP").setLightValue(0.856F).setStepSound(Block.soundGrassFootstep).setCreativeTab(undeadCreativeTab);
+	public static final Block necrobaneFlower = new ModUndeadBlockNecrobane(necrobaneFlowerID, 111).setBlockName("necrobaneFlowerUDP").setStepSound(Block.soundGrassFootstep).setCreativeTab(undeadCreativeTab);
+	public static final Block necrobaneTrail = new ModUndeadBlockNecrobaneTrail(necrobaneTrailID, 14).setBlockName("necrobaneTrailID").setCreativeTab(undeadCreativeTab);
 
 	public static final BiomeGenBase grave = new ModUndeadBiomeGenGrave(65).setBiomeName("Graveyard");   
 	public static final ModUndeadBlockGravePortal dimPortalBlock = (ModUndeadBlockGravePortal) new ModUndeadBlockGravePortal(portalBlockID, 50).setHardness(-1.0F).setStepSound(Block.soundGlassFootstep).setLightValue(0.75F).setBlockName("UDPGravePortal").setCreativeTab(undeadCreativeTab);
@@ -153,6 +163,7 @@ public class ModUndeadMainRegistry
 	public static final Item infernalLighter = new ModUndeadItemInfernalLighter(infernalLighterID).setItemName("infernalLighterUDP").setIconIndex(29).setCreativeTab(undeadCreativeTab);
 	public static final Item maggotMeatRaw = new ModUndeadItemMaggotMeatRaw(maggotMeatRawID, 2, false).setItemName("maggotMeatRawUDP").setIconIndex(27).setCreativeTab(undeadCreativeTab);
 	public static final Item maggotMeatCooked = new ModUndeadItemMaggotMeatCooked(maggotMeatCookedID, 4, false).setItemName("maggotMeatCookedUDP").setIconIndex(43).setCreativeTab(undeadCreativeTab);
+	public static final Item necrobaneAsh = new ModUndeadItemNecrobaneAsh(necrobaneAshID).setItemName("necrobaneAshID").setCreativeTab(undeadCreativeTab).setIconIndex(15);
 
 	static EnumArmorMaterial armourVolatite = EnumHelper.addArmorMaterial("VOLATITE", 60, new int[] {3, 8, 6, 3}, 10);
 	public static final Item volatiteHelmet = (new ModUndeadItemAmourVolatite(volatiteHelmetID, armourVolatite, 4, 0)).setIconIndex(0).setItemName("volatiteArmourHelmetUDP").setCreativeTab(undeadCreativeTab);
@@ -174,14 +185,14 @@ public class ModUndeadMainRegistry
 	public static final Item cyriteHoe = new ModUndeadItemCyriteHoe(cyriteHoeID, toolCyrite).setItemName("cyriteHoeUDP").setIconIndex(145).setCreativeTab(undeadCreativeTab).setCreativeTab(undeadCreativeTab);
 
 	public static final Achievement install = new Achievement(1600, "undeadInstall", 15, 0, Item.diamond, null).setSpecial().setIndependent().registerAchievement();
-	public static final Achievement hellHoundTame = new Achievement(1601, "undeadHoundTame", 13, 0, Item.diamond, install).registerAchievement();
-	public static final Achievement thinkerDoor = new Achievement(1602, "undeadThinkerDoor", 17, -6, Item.diamond, install).registerAchievement();
-	public static final Achievement scorcherKill = new Achievement(1603, "undeadScorcher", 17, -4, Item.diamond, install).registerAchievement();
-	public static final Achievement rotterKill = new Achievement(1604, "undeadRotter", 17, -2, Item.diamond, install).registerAchievement();
+	public static final Achievement hellHoundTame = new Achievement(1601, "undeadHoundTame", 13, 0, rottenBone, install).registerAchievement();
+	public static final Achievement thinkerDoor = new Achievement(1602, "undeadThinkerDoor", 17, -6, Item.doorWood, install).registerAchievement();
+	public static final Achievement scorcherKill = new Achievement(1603, "undeadScorcher", 17, -4, Item.bucketWater, install).registerAchievement();
+	public static final Achievement rotterKill = new Achievement(1604, "undeadRotter", 17, -2, Item.rottenFlesh, install).registerAchievement();
 	public static final Achievement bruteKill = new Achievement(1605, "undeadBrute", 17, 0, Item.diamond, install).registerAchievement();
 	public static final Achievement mummyKill = new Achievement(1606, "undeadMummy", 17, 2, Item.diamond, install).registerAchievement();
-	public static final Achievement frostbiteKill = new Achievement(1607, "undeadFrostbite", 17, 4, Item.diamond, install).registerAchievement();
-	public static final Achievement cordieKill = new Achievement(1608, "undeadCordie", 17, 6, Item.diamond, install).registerAchievement();
+	public static final Achievement frostbiteKill = new Achievement(1607, "undeadFrostbite", 17, 4, Item.snowball, install).registerAchievement();
+	public static final Achievement cordieKill = new Achievement(1608, "undeadCordie", 17, 6, cordycepsFungus, install).registerAchievement();
 	public static final Achievement ventKill = new Achievement(1609, "undeadVent", 17, 8, Item.diamond, install).registerAchievement();
 
 	public static final Achievement crowbarCraft = new Achievement(1610, "undeadCrowbarCraft", 13, -2, crowbar, install).registerAchievement();
@@ -214,57 +225,57 @@ public class ModUndeadMainRegistry
 
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityInfectedZombie.class, "UDInfected", EntityRegistry.findGlobalUniqueEntityId(), 0xb9c200, 0xaf0914); 
-		EntityRegistry.addSpawn(ModUndeadEntityInfectedZombie.class, 5, 5, 6, EnumCreatureType.monster);
+		EntityRegistry.addSpawn(ModUndeadEntityInfectedZombie.class, 101, 5, 6, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityCoolZombie.class, "UDCool", EntityRegistry.findGlobalUniqueEntityId(), 0x1f1f1f, 0xe6e6e6); 
-		EntityRegistry.addSpawn(ModUndeadEntityCoolZombie.class, 5, 5, 6, EnumCreatureType.monster);
+		EntityRegistry.addSpawn(ModUndeadEntityCoolZombie.class, 10, 5, 6, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityFeralZombie.class, "UDFeral", EntityRegistry.findGlobalUniqueEntityId(), 0x30551e, 0x9f1600); 
-		EntityRegistry.addSpawn(ModUndeadEntityFeralZombie.class, 5, 5, 6, EnumCreatureType.monster); 
+		EntityRegistry.addSpawn(ModUndeadEntityFeralZombie.class, 10, 5, 6, EnumCreatureType.monster); 
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityKnight.class, "UDKnight", EntityRegistry.findGlobalUniqueEntityId(), 0xc5c5c5, 0xebebeb); 
-		EntityRegistry.addSpawn(ModUndeadEntityKnight.class, 5, 5, 6, EnumCreatureType.monster);
+		EntityRegistry.addSpawn(ModUndeadEntityKnight.class, 10, 5, 6, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityThinker.class, "UDThinker", EntityRegistry.findGlobalUniqueEntityId(), 0x1d3a14, 0xc87691);
-		EntityRegistry.addSpawn(ModUndeadEntityThinker.class, 2, 1, 3, EnumCreatureType.monster);
+		EntityRegistry.addSpawn(ModUndeadEntityThinker.class, 4, 1, 3, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityNecromancer.class, "UDNecromancer", EntityRegistry.findGlobalUniqueEntityId(), 0x100F10, 0X7f7f7f);
-		EntityRegistry.addSpawn(ModUndeadEntityNecromancer.class, 1, 0, 1, EnumCreatureType.monster);
+		EntityRegistry.addSpawn(ModUndeadEntityNecromancer.class, 2, 0, 1, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityVent.class, "UDVent", EntityRegistry.findGlobalUniqueEntityId(), 0x616b2c, 0x364b0c);
-		EntityRegistry.addSpawn(ModUndeadEntityVent.class, 2, 0, 4, EnumCreatureType.monster);
+		EntityRegistry.addSpawn(ModUndeadEntityVent.class, 4, 0, 4, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityBrute.class, "UDBrute", EntityRegistry.findGlobalUniqueEntityId(), 0x00afaf, 0x676f65);
-		EntityRegistry.addSpawn(ModUndeadEntityBrute.class, 2, 2, 3, EnumCreatureType.monster);
+		EntityRegistry.addSpawn(ModUndeadEntityBrute.class, 4, 2, 3, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityZombrine.class, "UDZombrine", EntityRegistry.findGlobalUniqueEntityId(), 0x00afaf, 0xe4e0d3);
-		EntityRegistry.addSpawn(ModUndeadEntityZombrine.class, 1, 0, 1, EnumCreatureType.monster);
+		EntityRegistry.addSpawn(ModUndeadEntityZombrine.class, 2, 0, 1, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityWidower.class, "UDWidower", EntityRegistry.findGlobalUniqueEntityId(), 0x1e1813, 0x00c10c);
-		EntityRegistry.addSpawn(ModUndeadEntityWidower.class, 1, 1, 2, EnumCreatureType.monster);
+		EntityRegistry.addSpawn(ModUndeadEntityWidower.class, 2, 1, 2, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityRotter.class, "UDRotter", EntityRegistry.findGlobalUniqueEntityId(), 0x3c3f13, 0xab8b8b);
-		EntityRegistry.addSpawn(ModUndeadEntityRotter.class, 5, 5, 6, EnumCreatureType.monster);
+		EntityRegistry.addSpawn(ModUndeadEntityRotter.class, 100, 50, 60, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityCrawler.class, "UDCrawler", EntityRegistry.findGlobalUniqueEntityId(), 0xffffff, 0x000000);
 
 		//EntityRegistry.registerGlobalEntityID(ModUndeadEntityTamedWidower.class, "UDTamedWidower", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xffffff);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityInferno.class, "UDInferno", EntityRegistry.findGlobalUniqueEntityId(), 0x018383, 0xd4d3cf);
-		EntityRegistry.addSpawn(ModUndeadEntityInferno.class, 1, 0, 2, EnumCreatureType.monster, new BiomeGenBase []
+		EntityRegistry.addSpawn(ModUndeadEntityInferno.class, 200, 0, 2, EnumCreatureType.monster, new BiomeGenBase []
 				{
 			BiomeGenBase.hell
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityMaggot.class, "UDMaggot", EntityRegistry.findGlobalUniqueEntityId(), 0xb4b485, 0xab0501);
-		EntityRegistry.addSpawn(ModUndeadEntityMaggot.class, 3, 2, 4, EnumCreatureType.monster, new BiomeGenBase[]
+		EntityRegistry.addSpawn(ModUndeadEntityMaggot.class, 4, 2, 4, EnumCreatureType.monster, new BiomeGenBase[]
 				{
 			BiomeGenBase.plains,
 			BiomeGenBase.forest
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityFrostbite.class, "UDFrostbite", EntityRegistry.findGlobalUniqueEntityId(), 0x007487, 0x0031b3);
-		EntityRegistry.addSpawn(ModUndeadEntityFrostbite.class, 5, 5, 6, EnumCreatureType.monster,  new BiomeGenBase[] 
+		EntityRegistry.addSpawn(ModUndeadEntityFrostbite.class, 10, 5, 6, EnumCreatureType.monster,  new BiomeGenBase[] 
 				{   
 			BiomeGenBase.icePlains,
 			BiomeGenBase.iceMountains,
@@ -275,19 +286,19 @@ public class ModUndeadMainRegistry
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityBuccaneer.class, "UDBuccaneer", EntityRegistry.findGlobalUniqueEntityId(), 0x382101, 0xc1111a);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityMummy.class, "UDMummy", EntityRegistry.findGlobalUniqueEntityId(), 0xf9bb3d, 0x2a2300);
-		EntityRegistry.addSpawn(ModUndeadEntityMummy.class, 5, 5, 6, EnumCreatureType.monster,  new BiomeGenBase[] 
+		EntityRegistry.addSpawn(ModUndeadEntityMummy.class, 10, 5, 6, EnumCreatureType.monster,  new BiomeGenBase[] 
 				{   
 			BiomeGenBase.desert
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityMudman.class, "UDMudman", EntityRegistry.findGlobalUniqueEntityId(), 0x16776b, 0x24311c);
-		EntityRegistry.addSpawn(ModUndeadEntityMudman.class, 5, 5, 6, EnumCreatureType.monster,  new BiomeGenBase[] 
+		EntityRegistry.addSpawn(ModUndeadEntityMudman.class, 10, 5, 6, EnumCreatureType.monster,  new BiomeGenBase[] 
 				{   
 			BiomeGenBase.swampland
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityCordie.class, "UDCordie", EntityRegistry.findGlobalUniqueEntityId(), 0x004807, 0x411447);
-		EntityRegistry.addSpawn(ModUndeadEntityCordie.class, 2, 1, 4, EnumCreatureType.monster,  new BiomeGenBase[] 
+		EntityRegistry.addSpawn(ModUndeadEntityCordie.class, 10, 1, 4, EnumCreatureType.monster,  new BiomeGenBase[] 
 				{   
 			BiomeGenBase.mushroomIsland,
 			BiomeGenBase.jungle,
@@ -295,25 +306,25 @@ public class ModUndeadMainRegistry
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityFlare.class, "UDFlare", EntityRegistry.findGlobalUniqueEntityId(), 0x964646, 0xb80000);
-		EntityRegistry.addSpawn(ModUndeadEntityFlare.class, 100, 1, 3, EnumCreatureType.monster, new BiomeGenBase[]
+		EntityRegistry.addSpawn(ModUndeadEntityFlare.class, 200, 1, 3, EnumCreatureType.monster, new BiomeGenBase[]
 				{
 			BiomeGenBase.hell
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityScorcher.class, "UDScorcher", EntityRegistry.findGlobalUniqueEntityId(), 0xa42c00, 0x350000);
-		EntityRegistry.addSpawn(ModUndeadEntityScorcher.class, 100, 1, 3, EnumCreatureType.monster, new BiomeGenBase[]
+		EntityRegistry.addSpawn(ModUndeadEntityScorcher.class, 200, 1, 3, EnumCreatureType.monster, new BiomeGenBase[]
 				{
 			BiomeGenBase.hell	
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityHellHound.class, "UDHellHound", EntityRegistry.findGlobalUniqueEntityId(), 0x350000, 0xa5da03);
-		EntityRegistry.addSpawn(ModUndeadEntityHellHound.class, 100, 1, 7, EnumCreatureType.monster, new BiomeGenBase [] 
+		EntityRegistry.addSpawn(ModUndeadEntityHellHound.class, 200, 1, 7, EnumCreatureType.monster, new BiomeGenBase [] 
 				{
 			BiomeGenBase.hell
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityEndermark.class, "UDEndermark", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xd800f8);
-		EntityRegistry.addSpawn(ModUndeadEntityEndermark.class, 1, 0, 4, EnumCreatureType.monster, new BiomeGenBase [] 
+		EntityRegistry.addSpawn(ModUndeadEntityEndermark.class, 2, 0, 4, EnumCreatureType.monster, new BiomeGenBase [] 
 				{
 			BiomeGenBase.sky
 				});
@@ -325,13 +336,14 @@ public class ModUndeadMainRegistry
 			BiomeGenBase.ocean
 				});*/
 
-		//EntityRegistry.registerGlobalEntityID(ModUndeadEntitySurvivor.class, "UDSurvivor", EntityRegistry.findGlobalUniqueEntityId(), 0xe10000, 0xebebeb);
+		EntityRegistry.registerGlobalEntityID(ModUndeadEntitySurvivor.class, "UDSurvivor", EntityRegistry.findGlobalUniqueEntityId(), 0xe10000, 0xebebeb);
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityGhoul.class, "UDGhoul", EntityRegistry.findGlobalUniqueEntityId(), 0x84b568, 0x84b568);
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityTamedZombie.class, "UDTamedZombie", EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.registerModEntity(ModUndeadEntityImmortiumArrow.class, "UDImmortiumArrow", 1, this, 64, 20, false);
-		//EntityRegistry.registerGlobalEntityID(ModUndeadEntityPoisonousBall.class, "UDPosionBall", EntityRegistry.findGlobalUniqueEntityId());
-		EntityRegistry.registerModEntity(ModUndeadEntityPoisonousBall.class, "UDPoisonBall", 2, this, 64, 120, true);
-		EntityRegistry.registerModEntity(ModUndeadEntityNecromancerFireball.class, "UDNecroamcncerBall", 3, this, 64, 120, true);
+		EntityRegistry.registerModEntity(ModUndeadEntityTeleportationArrow.class, "UDTeleportationArrow", 2, this, 64, 20, false);
+		EntityRegistry.registerModEntity(ModUndeadEntityFlamingArrow.class, "UDFlamingArrow", 3, this, 64, 20, false);
+		EntityRegistry.registerModEntity(ModUndeadEntityPoisonousBall.class, "UDPoisonBall", 4, this, 64, 120, true);
+		EntityRegistry.registerModEntity(ModUndeadEntityNecromancerFireball.class, "UDNecromancerBall", 5, this, 64, 120, true);
 
 
 
@@ -347,14 +359,13 @@ public class ModUndeadMainRegistry
 		GameRegistry.addRecipe(new ItemStack(summoningTable, 1), new Object [] {" # ", "%^%", "&%&", '#', necronomicon, '%', Block.obsidian, '^', Item.diamond, '&', immortiumShard});
 
 		ModUndeadRenderSummoningTable summoningRender = new ModUndeadRenderSummoningTable();
-		ModLoader.registerTileEntity(ModUndeadTileEntitySummoningTable.class, "summoningTableAndRenderer", summoningRender);
-		GameRegistry.registerTileEntity(ModUndeadTileEntitySummoningTable.class, "undeadPlusSummoningTable");
+		ClientRegistry.registerTileEntity(ModUndeadTileEntitySummoningTable.class, "summoningTableAndRenderer", summoningRender);
 
 
 		//GameRegistry.registerBlock(gravestone);
 		//LanguageRegistry.addName(gravestone, "Gravestone");
 		ModUndeadTileEntityGravestoneRenderer gravestoneRender = new ModUndeadTileEntityGravestoneRenderer();
-		//ModLoader.registerTileEntity(ModUndeadTileEntityGravestone.class, "gravestoneAndRenderer", gravestoneRender);
+		//ClientRegistry.registerTileEntity(ModUndeadTileEntityGravestone.class, "gravestoneAndRenderer", gravestoneRender);
 
 
 		LanguageRegistry.addName(crowbar, "Crowbar");
@@ -366,6 +377,16 @@ public class ModUndeadMainRegistry
 		GameRegistry.registerBlock(dreadPlanks);
 		LanguageRegistry.addName(dreadPlanks, "Dread Planks");
 		GameRegistry.addRecipe(new ItemStack(dreadPlanks, 4), new Object [] { "#", '#', dreadWood});
+
+		GameRegistry.registerBlock(dreadPlankStairs);
+		LanguageRegistry.addName(dreadPlankStairs, "Dread Plank Stairs");
+		GameRegistry.addRecipe(new ItemStack(dreadPlankStairs, 4), new Object [] {"  #", " ##", "###", '#', dreadPlanks});
+		GameRegistry.addRecipe(new ItemStack(dreadPlankStairs, 4), new Object [] {"#  ", "## ", "###", '#', dreadPlanks});
+
+		GameRegistry.registerBlock(dreadPlankSlabs);
+		LanguageRegistry.addName(dreadPlankSlabs, "Dread Plank Slab");
+		GameRegistry.addRecipe(new ItemStack(dreadPlankSlabs, 6), new Object [] {"###", '#', dreadPlanks});
+
 
 		LanguageRegistry.addName(reinforcedDoorItem, "Reinforced Door");
 		GameRegistry.registerBlock(reinforcedDoor);
@@ -434,6 +455,11 @@ public class ModUndeadMainRegistry
 
 		GameRegistry.registerBlock(pyrose);
 		LanguageRegistry.addName(pyrose, "Pyrose");
+		GameRegistry.registerBlock(necrobaneFlower);
+		GameRegistry.registerBlock(necrobaneTrail);
+		LanguageRegistry.addName(necrobaneFlower, "Necrobane");
+		LanguageRegistry.addName(necrobaneAsh, "Necrobane Ash");
+
 
 		//TODO:GameRegistry.registerBlock(dimPortalBlock);
 		LanguageRegistry.addName(dimPortalBlock, "Grave Portal");
@@ -490,6 +516,7 @@ public class ModUndeadMainRegistry
 		GameRegistry.addSmelting(volatiteOre.blockID, new ItemStack(volatiteIngot, 1), 0.6F);
 		GameRegistry.addSmelting(cyriteOre.blockID, new ItemStack(cyriteIngot, 1), 0.8F);
 		GameRegistry.addSmelting(maggotMeatRaw.itemID, new ItemStack(maggotMeatCooked, 1), 0.3F);
+		GameRegistry.addSmelting(necrobaneFlower.blockID, new ItemStack(necrobaneAsh, 4), 0.2F);
 
 		//GameRegistry.addRecipe(new ItemStack(cyriteHelmet, 2), new Object [] {"#", '#', Block.dirt});
 		//GameRegistry.addRecipe(new ItemStack(cyriteChestplate, 2), new Object [] {"##", '#', Block.dirt});
@@ -579,27 +606,30 @@ public class ModUndeadMainRegistry
 
 		config.load();
 
-		portalFrameID = Integer.parseInt(config.getBlock( "Grave Dimension Portal Frame" , 175).value);
-		cordycepsFungusBlockID = Integer.parseInt(config.getBlock( "Cordyceps Fungus Block" , 176).value);
-		summoningTableID = Integer.parseInt(config.getBlock( "Summoning Table" , 177).value);
-		gravestoneID = Integer.parseInt(config.getBlock( "Gravestone" , 178).value);
-		dreadWoodID = Integer.parseInt(config.getBlock( "Dread Wood" , 179).value);
-		dreadPlanksID = Integer.parseInt(config.getBlock( "Dread Planks" , 180).value);
-		reinforcedDoorID = Integer.parseInt(config.getBlock( "Reinforced Door" , 181).value);
-		blueFlamesID = Integer.parseInt(config.getBlock( "Blue Flames" , 182).value);
-		immortiumOreID = Integer.parseInt(config.getBlock( "Immortium Ore" , 183).value);
-		volatiteOreID = Integer.parseInt(config.getBlock( "Volatite Ore" , 184).value);
-		inferniteOreID = Integer.parseInt(config.getBlock( "Infernite Ore" , 185).value);
-		charcoalOreID = Integer.parseInt(config.getBlock( "Charcoal Ore" , 186).value);
-		endoreOreID = Integer.parseInt(config.getBlock( "Endore Ore" , 187).value);
-		cyriteOreID = Integer.parseInt(config.getBlock( "Cyrite Ore" , 188).value);
-		dimStoneID = Integer.parseInt(config.getBlock( "Grave Dimension Stone" , 189).value);
-		dimGrassID = Integer.parseInt(config.getBlock( "Grave Dimension Grass" , 190).value);
-		dimDirtID = Integer.parseInt(config.getBlock( "Grave Dimension Dirt" , 191).value);
-		thornsID = Integer.parseInt(config.getBlock( "Thorns" , 192).value);
-		krelickBushID = Integer.parseInt(config.getBlock( "Krelick Berry Bush" , 193).value);
-		pyroseID = Integer.parseInt(config.getBlock( "Pyrose" , 194).value);
-		portalBlockID = Integer.parseInt(config.getBlock( "Grave Dimension Portal" , 195).value);
+		portalFrameID = Integer.parseInt(config.getBlock( "Grave Dimension Portal Frame" , 300).value);
+		cordycepsFungusBlockID = Integer.parseInt(config.getBlock( "Cordyceps Fungus Block" , 301).value);
+		summoningTableID = Integer.parseInt(config.getBlock( "Summoning Table" , 302).value);
+		gravestoneID = Integer.parseInt(config.getBlock( "Gravestone" , 303).value);
+		dreadWoodID = Integer.parseInt(config.getBlock( "Dread Wood" , 304).value);
+		dreadPlanksID = Integer.parseInt(config.getBlock( "Dread Planks" , 305).value);
+		dreadPlankStairsID = Integer.parseInt(config.getBlock( "Dread Plank Stairs" , 306).value);
+		dreadPlankSlabsID = Integer.parseInt(config.getBlock( "Dread Plank Slabs" , 307).value);		
+		reinforcedDoorID = Integer.parseInt(config.getBlock( "Reinforced Door" , 308).value);
+		blueFlamesID = Integer.parseInt(config.getBlock( "Blue Flames" , 309).value);
+		immortiumOreID = Integer.parseInt(config.getBlock( "Immortium Ore" , 310).value);
+		volatiteOreID = Integer.parseInt(config.getBlock( "Volatite Ore" , 311).value);
+		inferniteOreID = Integer.parseInt(config.getBlock( "Infernite Ore" , 312).value);
+		charcoalOreID = Integer.parseInt(config.getBlock( "Charcoal Ore" , 313).value);
+		endoreOreID = Integer.parseInt(config.getBlock( "Endore Ore" , 314).value);
+		cyriteOreID = Integer.parseInt(config.getBlock( "Cyrite Ore" , 315).value);
+		dimStoneID = Integer.parseInt(config.getBlock( "Grave Dimension Stone" , 316).value);
+		dimGrassID = Integer.parseInt(config.getBlock( "Grave Dimension Grass" , 317).value);
+		dimDirtID = Integer.parseInt(config.getBlock( "Grave Dimension Dirt" , 318).value);
+		thornsID = Integer.parseInt(config.getBlock( "Thorns" , 319).value);
+		krelickBushID = Integer.parseInt(config.getBlock( "Krelick Berry Bush" , 320).value);
+		pyroseID = Integer.parseInt(config.getBlock( "Pyrose" , 321).value);
+		necrobaneFlowerID = Integer.parseInt(config.getBlock("Necrobane", 322).value);
+		portalBlockID = Integer.parseInt(config.getBlock( "Grave Dimension Portal" , 323).value);
 
 		necronomiconID = Integer.parseInt(config.getItem( "Necronomicon", "item", 12000).value);
 		cordycepsFungusID = Integer.parseInt(config.getItem( "Cordyceps Fungus", "item", 12001).value);
@@ -617,6 +647,7 @@ public class ModUndeadMainRegistry
 		infernalLighterID = Integer.parseInt(config.getItem( "Infernal Lighter", "item", 12026).value);
 		maggotMeatRawID = Integer.parseInt(config.getItem("Raw Maggot Meat", "item", 12027).value);
 		maggotMeatCookedID = Integer.parseInt(config.getItem("Cooked Maggot Meat", "item", 12028).value);
+		necrobaneAshID = Integer.parseInt(config.getItem("Necrobane Ash", "item", 12029).value);
 
 		volatiteHelmetID = Integer.parseInt(config.getItem( "Volatite Helmet", "item", 12012).value);
 		volatiteChestplateID = Integer.parseInt(config.getItem( "Volatite Chestplate", "item", 12013).value);

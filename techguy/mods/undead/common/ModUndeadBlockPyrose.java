@@ -12,7 +12,7 @@ public class ModUndeadBlockPyrose extends Block
 {
 	public ModUndeadBlockPyrose (int i, int j)
 	{
-		super(i, j, Material.wood);
+		super(i, j, Material.plants);
 		float var4 = 0.2F;
 		setBlockBounds(0.2F, 0.0F, 0.2F, 0.8F, 0.5F, 0.8F);
 	}
@@ -60,5 +60,19 @@ public class ModUndeadBlockPyrose extends Block
     protected boolean canThisPlantGrowOnThisBlockID(int par1)
     {
         return par1 == ModUndeadMainRegistry.dimGrass.blockID || par1 == ModUndeadMainRegistry.dimDirt.blockID;
+    }
+    
+    public boolean canBlockStay(World par1World, int par2, int par3, int par4)
+    {
+        return this.canPlaceBlockAt(par1World, par2, par3, par4);
+    }
+    
+    protected final void checkBlockCoordValid(World par1World, int par2, int par3, int par4)
+    {
+        if (!this.canBlockStay(par1World, par2, par3, par4))
+        {
+            this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
+            par1World.setBlockWithNotify(par2, par3, par4, 0);
+        }
     }
 }

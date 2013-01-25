@@ -14,6 +14,7 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,7 +35,7 @@ public class ModUndeadEntityCordie extends EntityMob
         tasks.addTask(0, new EntityAISwimming(this));
         tasks.addTask(1, new EntityAIBreakDoor(this));
         tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, moveSpeed, false));
-        tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityZombie.class, moveSpeed, true));
+        tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityVillager.class, moveSpeed, true));
         tasks.addTask(4, new EntityAIMoveTwardsRestriction(this, moveSpeed));
         tasks.addTask(5, new EntityAIMoveThroughVillage(this, moveSpeed, false));
         tasks.addTask(6, new EntityAIWander(this, moveSpeed));
@@ -42,7 +43,7 @@ public class ModUndeadEntityCordie extends EntityMob
         tasks.addTask(7, new EntityAILookIdle(this));
         targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16F, 0, true));
-        targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityZombie.class, 16F, 0, false));
+        targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 16F, 0, false));
 	}
 	
     public int func_82193_c(Entity par1Entity)

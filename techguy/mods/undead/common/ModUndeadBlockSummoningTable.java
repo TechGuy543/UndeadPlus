@@ -1,14 +1,14 @@
 package techguy.mods.undead.common;
 
-import techguy.mods.undead.client.ModUndeadGuiSummoningTable;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.src.ModLoader;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import techguy.mods.undead.client.ModUndeadGuiSummoningTable;
 
 public class ModUndeadBlockSummoningTable extends BlockContainer
 {
@@ -24,7 +24,7 @@ public class ModUndeadBlockSummoningTable extends BlockContainer
     public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
     {
 
-		mc = ModLoader.getMinecraftInstance();
+		mc = Minecraft.getMinecraft();
 		mc.displayGuiScreen(new ModUndeadGuiSummoningTable(par1World, par5EntityPlayer, mc));
         return true;
     }
@@ -62,39 +62,6 @@ public class ModUndeadBlockSummoningTable extends BlockContainer
     public TileEntity createNewTileEntity(World var1)
     {
         return new ModUndeadTileEntitySummoningTable();
-    }
-    
-    public void onBlockAdded(World world, int i, int j, int k)
-    {
-        super.onBlockAdded(world, i, j, k);
-        setDefaultDirection(world, i, j, k);
-    }
-    
-    private void setDefaultDirection(World world, int i, int j, int k)
-    {
-
-        int l = world.getBlockId(i, j, k - 1);
-        int i1 = world.getBlockId(i, j, k + 1);
-        int j1 = world.getBlockId(i - 1, j, k);
-        int k1 = world.getBlockId(i + 1, j, k);
-        byte byte0 = 3;
-        if (Block.opaqueCubeLookup[l] && !Block.opaqueCubeLookup[i1])
-        {
-            byte0 = 3;
-        }
-        if (Block.opaqueCubeLookup[i1] && !Block.opaqueCubeLookup[l])
-        {
-            byte0 = 2;
-        }
-        if (Block.opaqueCubeLookup[j1] && !Block.opaqueCubeLookup[k1])
-        {
-            byte0 = 5;
-        }
-        if (Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[j1])
-        {
-            byte0 = 4;
-        }
-        world.setBlockMetadataWithNotify(i, j, k, byte0);
     }
     
 	public String getTextureFile()
