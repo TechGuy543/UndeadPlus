@@ -137,24 +137,6 @@ public class ModUndeadClientTickHandler implements ITickHandler
 
 			}
 
-			/*try {
-				URL url2 = new URL("http://undeadplusversion.webs.com/index.html");
-
-				BufferedReader in2 = new BufferedReader(new InputStreamReader(
-						url2.openStream()));
-				Pattern pat2 = Pattern.compile("minorVersion=\\d+");
-				Matcher matcher2;
-				String str2;
-				while ((str2 = in2.readLine()) != null) {
-					if (str2.contains("minorVersion")) {
-						matcher2 = pat2.matcher(str2);
-						if (matcher2.find())
-							retrievedMinorVersion = Integer.parseInt(matcher2.group(0)
-									.substring(29));
-						break;
-					}
-
-				}*/
 
 
 			//System.out.println("Major:" + retrievedMajorVersion);
@@ -208,7 +190,6 @@ public class ModUndeadClientTickHandler implements ITickHandler
 		ItemStack chestPlate = minecraft.thePlayer.inventory.armorInventory[2];
 		ItemStack legs = minecraft.thePlayer.inventory.armorInventory[1];
 		ItemStack boots = minecraft.thePlayer.inventory.armorInventory[0];
-
 		if(helmet == null)
 		{
 			return;

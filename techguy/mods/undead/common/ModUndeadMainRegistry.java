@@ -12,6 +12,7 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.src.ModLoader;
@@ -30,6 +31,7 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.PostInit;
 import cpw.mods.fml.common.Mod.PreInit;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -82,6 +84,7 @@ public class ModUndeadMainRegistry
 	static int necrobaneTrailID;
 	static int portalBlockID;
 
+	static int debugItemID;
 	static int necronomiconID;
 	static int cordycepsFungusID;
 	static int crowbarID;
@@ -112,7 +115,7 @@ public class ModUndeadMainRegistry
 	static int cyriteSwordID;
 	static int cyriteHoeID;
 	static int necrobaneAshID;
-
+	
 
 
 
@@ -163,21 +166,22 @@ public class ModUndeadMainRegistry
 	public static final Item infernalLighter = new ModUndeadItemInfernalLighter(infernalLighterID).setItemName("infernalLighterUDP").setIconIndex(29).setCreativeTab(undeadCreativeTab);
 	public static final Item maggotMeatRaw = new ModUndeadItemMaggotMeatRaw(maggotMeatRawID, 2, false).setItemName("maggotMeatRawUDP").setIconIndex(27).setCreativeTab(undeadCreativeTab);
 	public static final Item maggotMeatCooked = new ModUndeadItemMaggotMeatCooked(maggotMeatCookedID, 4, false).setItemName("maggotMeatCookedUDP").setIconIndex(43).setCreativeTab(undeadCreativeTab);
-	public static final Item necrobaneAsh = new ModUndeadItemNecrobaneAsh(necrobaneAshID).setItemName("necrobaneAshID").setCreativeTab(undeadCreativeTab).setIconIndex(15);
+	public static final Item necrobaneAsh = new ModUndeadItemNecrobaneAsh(necrobaneAshID).setItemName("necrobaneAshUDP").setCreativeTab(undeadCreativeTab).setIconIndex(15);
+	public static final Item debugItem = new ModUndeadItemDebug(debugItemID).setItemName("debugItemUDP");
 
-	static EnumArmorMaterial armourVolatite = EnumHelper.addArmorMaterial("VOLATITE", 60, new int[] {3, 8, 6, 3}, 10);
+	static EnumArmorMaterial armourVolatite = EnumHelper.addArmorMaterial("VOLATITE", 350, new int[] {3, 8, 6, 3}, 10);
 	public static final Item volatiteHelmet = (new ModUndeadItemAmourVolatite(volatiteHelmetID, armourVolatite, 4, 0)).setIconIndex(0).setItemName("volatiteArmourHelmetUDP").setCreativeTab(undeadCreativeTab);
 	public static final Item volatiteChestplate = (new ModUndeadItemAmourVolatite(volatiteChestplateID, armourVolatite, 4, 1)).setIconIndex(16).setItemName("volatiteArmourPlateUDP").setCreativeTab(undeadCreativeTab);
 	public static final Item volatiteLeggings = (new ModUndeadItemAmourVolatite(volatiteLeggingsID, armourVolatite, 4, 2)).setIconIndex(32).setItemName("volatiteArmourLegsUDP").setCreativeTab(undeadCreativeTab);
 	public static final Item volatiteBoots = (new ModUndeadItemAmourVolatite(volatiteBootsID, armourVolatite, 4, 3)).setIconIndex(48).setItemName("volatiteArmourBootsUDP").setCreativeTab(undeadCreativeTab);
 
-	static EnumArmorMaterial armourCyrite = EnumHelper.addArmorMaterial("CYRITE", 61, new int[] {2, 7, 5, 2}, 9);
+	static EnumArmorMaterial armourCyrite = EnumHelper.addArmorMaterial("CYRITE", 350, new int[] {2, 7, 5, 2}, 9);
 	public static final Item cyriteHelmet = (new ModUndeadItemAmourCyrite(cyriteHelmetID, armourCyrite, 4, 0)).setIconIndex(1).setItemName("cyriteArmourHelmetUDP").setCreativeTab(undeadCreativeTab);
 	public static final Item cyriteChestplate = (new ModUndeadItemAmourCyrite(cyriteChestplateID, armourCyrite, 4, 1)).setIconIndex(17).setItemName("cyriteArmourPlateUDP").setCreativeTab(undeadCreativeTab);
 	public static final Item cyriteLeggings = (new ModUndeadItemAmourCyrite(cyriteLeggingsID, armourCyrite, 4, 2)).setIconIndex(33).setItemName("cyriteArmourLegsUDP").setCreativeTab(undeadCreativeTab);
 	public static final Item cyriteBoots = (new ModUndeadItemAmourCyrite(cyriteBootsID, armourCyrite, 4, 3)).setIconIndex(49).setItemName("cyriteArmourBootsUDP").setCreativeTab(undeadCreativeTab);
 
-	static EnumToolMaterial toolCyrite = EnumHelper.addToolMaterial("CYRITE", 62, 350, 15F, 1, 10);
+	static EnumToolMaterial toolCyrite = EnumHelper.addToolMaterial("CYRITE", 5, 350, 15F, 1, 10);
 	public static final Item cyritePickaxe = new ModUndeadItemCyritePickaxe(cyritePickaxeID, toolCyrite).setItemName("cyritePickaxeUDP").setIconIndex(113).setCreativeTab(undeadCreativeTab);
 	public static final Item cyriteAxe = new ModUndeadItemCyriteAxe(cyriteAxeID, toolCyrite).setItemName("cyriteAxeUDP").setIconIndex(129).setCreativeTab(undeadCreativeTab);
 	public static final Item cyriteShovel = new ModUndeadItemCyriteShovel(cyriteShovelID, toolCyrite).setItemName("cyriteShovelUDP").setIconIndex(97).setCreativeTab(undeadCreativeTab);
@@ -193,13 +197,13 @@ public class ModUndeadMainRegistry
 	public static final Achievement mummyKill = new Achievement(1606, "undeadMummy", 17, 2, Item.diamond, install).registerAchievement();
 	public static final Achievement frostbiteKill = new Achievement(1607, "undeadFrostbite", 17, 4, Item.snowball, install).registerAchievement();
 	public static final Achievement cordieKill = new Achievement(1608, "undeadCordie", 17, 6, cordycepsFungus, install).registerAchievement();
-	public static final Achievement ventKill = new Achievement(1609, "undeadVent", 17, 8, Item.diamond, install).registerAchievement();
+	public static final Achievement ventKill = new Achievement(1609, "undeadVent", 17, 8, new ItemStack(debugItem, 1, 1), install).registerAchievement();
 
-	public static final Achievement crowbarCraft = new Achievement(1610, "undeadCrowbarCraft", 13, -2, crowbar, install).registerAchievement();
+	public static final Achievement crowbarCraft = new Achievement(1610, "undeadCrowbarCraft", 13, -6, crowbar, install).registerAchievement();
 	public static final Achievement immortiumMine = new Achievement(1611, "undeadImmortiumMine", 13, 2, immortiumShard, install).registerAchievement();
 	public static final Achievement summoningCraft = new Achievement(1612, "undeadSummoningCraft", 13, 4, summoningTable, immortiumMine).registerAchievement();
-
-	//public static final Achievement rottenFlesh = new Achievement(1613, "undeadRottenFlesh", 15, 7, Item.diamond, null).registerAchievement();
+	public static final Achievement rottenFlesh = new Achievement(1613, "undeadRottenFlesh", 13, -2, volatiteChestplate, install).registerAchievement();
+	
 	//public static final Achievement oneMobDown = new Achievement(1614, "undeadOneMobDown", 15, 7, Item.diamond, null).registerAchievement();
 	//public static final Achievement allMobDown = new Achievement(1615, "undeadAllMobDown", 15, 7, Item.diamond, null).registerAchievement();
 
@@ -207,9 +211,10 @@ public class ModUndeadMainRegistry
 
 
 	@Init
-	public void preload(FMLInitializationEvent event)
+	public void load(FMLInitializationEvent event)
 	{
 
+		Item.rottenFlesh = new ModUndeadItemRottenFleshReplacement(111, 4, 0.1F, true).setPotionEffect(Potion.hunger.id, 30, 0, 0.8F).setIconCoord(11, 5).setItemName("rottenFlesh");
 		DimensionManager.registerProviderType(70, ModUndeadGraveDimensionWorldProvider.class, true);
 		DimensionManager.registerDimension(70, 70);
 		ModUndeadClientProxy.registerRenderInformation();
@@ -218,7 +223,6 @@ public class ModUndeadMainRegistry
 		GameRegistry.registerPickupHandler(new ModUndeadPickupHandler());
 		//AchievementPage.registerAchievementPage(undeadPlusAchievements);
 		//RenderingRegistry.instance().registerBlockHandler(new ModUndeadRenderGravestone());
-
 
 		Block.setBurnProperties(dreadPlanks.blockID, 2, 2);
 		Block.setBurnProperties(dreadWood.blockID, 2, 2);
@@ -368,6 +372,7 @@ public class ModUndeadMainRegistry
 		//ClientRegistry.registerTileEntity(ModUndeadTileEntityGravestone.class, "gravestoneAndRenderer", gravestoneRender);
 
 
+		LanguageRegistry.addName(debugItem, "Undead+ Debug Item");
 		LanguageRegistry.addName(crowbar, "Crowbar");
 		GameRegistry.addRecipe(new ItemStack(crowbar, 1), new Object [] {"  #", " # ", "#  ", '#', Item.ingotIron});
 
@@ -560,8 +565,8 @@ public class ModUndeadMainRegistry
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadSummoningCraft", "Necromancer");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadSummoningCraft.desc", "Craft a Summoning Table");
 
-		//LanguageRegistry.instance().addStringLocalization("achievement.undeadRottenFlesh", "Acquired Taste");
-		//LanguageRegistry.instance().addStringLocalization("achievement.undeadRottenFlesh.desc", "Eat Rotten Flesh While in Full Volatite Armor");
+		LanguageRegistry.instance().addStringLocalization("achievement.undeadRottenFlesh", "Acquired Taste");
+		LanguageRegistry.instance().addStringLocalization("achievement.undeadRottenFlesh.desc", "Eat Rotten Flesh While in Full Volatite Armor");
 
 		//LanguageRegistry.instance().addStringLocalization("achievement.undeadOneMobDown", "One Down...");
 		//LanguageRegistry.instance().addStringLocalization("achievement.undeadOneMobDown.desc", "Kill One New Mob");
@@ -631,6 +636,7 @@ public class ModUndeadMainRegistry
 		necrobaneFlowerID = Integer.parseInt(config.getBlock("Necrobane", 322).value);
 		portalBlockID = Integer.parseInt(config.getBlock( "Grave Dimension Portal" , 323).value);
 
+		debugItemID = Integer.parseInt(config.getItem("DebugItem",  "item", 11999).value);
 		necronomiconID = Integer.parseInt(config.getItem( "Necronomicon", "item", 12000).value);
 		cordycepsFungusID = Integer.parseInt(config.getItem( "Cordyceps Fungus", "item", 12001).value);
 		crowbarID = Integer.parseInt(config.getItem( "Crowbar", "item", 12002).value);
