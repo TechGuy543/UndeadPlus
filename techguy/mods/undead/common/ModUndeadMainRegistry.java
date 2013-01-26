@@ -232,7 +232,6 @@ public class ModUndeadMainRegistry
 	public void load(FMLInitializationEvent event)
 	{
 
-		Item.rottenFlesh = new ModUndeadItemRottenFleshReplacement(111, 4, 0.1F, true).setPotionEffect(Potion.hunger.id, 30, 0, 0.8F).setIconCoord(11, 5).setItemName("rottenFlesh");
 		DimensionManager.registerProviderType(70, ModUndeadGraveDimensionWorldProvider.class, true);
 		DimensionManager.registerDimension(70, 70);
 		ModUndeadClientProxy.registerRenderInformation();
@@ -247,57 +246,57 @@ public class ModUndeadMainRegistry
 
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityInfectedZombie.class, "UDInfected", EntityRegistry.findGlobalUniqueEntityId(), 0xb9c200, 0xaf0914); 
-		EntityRegistry.addSpawn(ModUndeadEntityInfectedZombie.class, 101, 5, 6, EnumCreatureType.monster);
+		ModLoader.addSpawn(ModUndeadEntityInfectedZombie.class, 10, 5, 6, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityCoolZombie.class, "UDCool", EntityRegistry.findGlobalUniqueEntityId(), 0x1f1f1f, 0xe6e6e6); 
-		EntityRegistry.addSpawn(ModUndeadEntityCoolZombie.class, 10, 5, 6, EnumCreatureType.monster);
+		ModLoader.addSpawn(ModUndeadEntityCoolZombie.class, 10, 5, 6, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityFeralZombie.class, "UDFeral", EntityRegistry.findGlobalUniqueEntityId(), 0x30551e, 0x9f1600); 
-		EntityRegistry.addSpawn(ModUndeadEntityFeralZombie.class, 10, 5, 6, EnumCreatureType.monster); 
+		ModLoader.addSpawn(ModUndeadEntityFeralZombie.class, 10, 5, 6, EnumCreatureType.monster); 
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityKnight.class, "UDKnight", EntityRegistry.findGlobalUniqueEntityId(), 0xc5c5c5, 0xebebeb); 
-		EntityRegistry.addSpawn(ModUndeadEntityKnight.class, 10, 5, 6, EnumCreatureType.monster);
+		ModLoader.addSpawn(ModUndeadEntityKnight.class, 10, 5, 6, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityThinker.class, "UDThinker", EntityRegistry.findGlobalUniqueEntityId(), 0x1d3a14, 0xc87691);
-		EntityRegistry.addSpawn(ModUndeadEntityThinker.class, 4, 1, 3, EnumCreatureType.monster);
+		ModLoader.addSpawn(ModUndeadEntityThinker.class, 10, 1, 3, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityNecromancer.class, "UDNecromancer", EntityRegistry.findGlobalUniqueEntityId(), 0x100F10, 0X7f7f7f);
-		EntityRegistry.addSpawn(ModUndeadEntityNecromancer.class, 2, 0, 1, EnumCreatureType.monster);
+		ModLoader.addSpawn(ModUndeadEntityNecromancer.class, 10, 1, 3, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityVent.class, "UDVent", EntityRegistry.findGlobalUniqueEntityId(), 0x616b2c, 0x364b0c);
-		EntityRegistry.addSpawn(ModUndeadEntityVent.class, 4, 0, 4, EnumCreatureType.monster);
+		ModLoader.addSpawn(ModUndeadEntityVent.class, 10, 2, 4, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityBrute.class, "UDBrute", EntityRegistry.findGlobalUniqueEntityId(), 0x00afaf, 0x676f65);
-		EntityRegistry.addSpawn(ModUndeadEntityBrute.class, 4, 2, 3, EnumCreatureType.monster);
+		ModLoader.addSpawn(ModUndeadEntityBrute.class, 10, 2, 3, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityZombrine.class, "UDZombrine", EntityRegistry.findGlobalUniqueEntityId(), 0x00afaf, 0xe4e0d3);
-		EntityRegistry.addSpawn(ModUndeadEntityZombrine.class, 2, 0, 1, EnumCreatureType.monster);
+		ModLoader.addSpawn(ModUndeadEntityZombrine.class, 10, 0, 1, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityWidower.class, "UDWidower", EntityRegistry.findGlobalUniqueEntityId(), 0x1e1813, 0x00c10c);
-		EntityRegistry.addSpawn(ModUndeadEntityWidower.class, 2, 1, 2, EnumCreatureType.monster);
+		ModLoader.addSpawn(ModUndeadEntityWidower.class, 10, 1, 2, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityRotter.class, "UDRotter", EntityRegistry.findGlobalUniqueEntityId(), 0x3c3f13, 0xab8b8b);
-		EntityRegistry.addSpawn(ModUndeadEntityRotter.class, 100, 50, 60, EnumCreatureType.monster);
+		ModLoader.addSpawn(ModUndeadEntityRotter.class, 10, 1, 3, EnumCreatureType.monster);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityCrawler.class, "UDCrawler", EntityRegistry.findGlobalUniqueEntityId(), 0xffffff, 0x000000);
 
 		//EntityRegistry.registerGlobalEntityID(ModUndeadEntityTamedWidower.class, "UDTamedWidower", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xffffff);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityInferno.class, "UDInferno", EntityRegistry.findGlobalUniqueEntityId(), 0x018383, 0xd4d3cf);
-		EntityRegistry.addSpawn(ModUndeadEntityInferno.class, 200, 0, 2, EnumCreatureType.monster, new BiomeGenBase []
+		ModLoader.addSpawn(ModUndeadEntityInferno.class, 10, 0, 2, EnumCreatureType.monster, new BiomeGenBase []
 				{
 			BiomeGenBase.hell
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityMaggot.class, "UDMaggot", EntityRegistry.findGlobalUniqueEntityId(), 0xb4b485, 0xab0501);
-		EntityRegistry.addSpawn(ModUndeadEntityMaggot.class, 4, 2, 4, EnumCreatureType.monster, new BiomeGenBase[]
+		ModLoader.addSpawn(ModUndeadEntityMaggot.class, 4, 2, 4, EnumCreatureType.monster, new BiomeGenBase[]
 				{
 			BiomeGenBase.plains,
 			BiomeGenBase.forest
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityFrostbite.class, "UDFrostbite", EntityRegistry.findGlobalUniqueEntityId(), 0x007487, 0x0031b3);
-		EntityRegistry.addSpawn(ModUndeadEntityFrostbite.class, 10, 5, 6, EnumCreatureType.monster,  new BiomeGenBase[] 
+		ModLoader.addSpawn(ModUndeadEntityFrostbite.class, 10, 5, 6, EnumCreatureType.monster,  new BiomeGenBase[] 
 				{   
 			BiomeGenBase.icePlains,
 			BiomeGenBase.iceMountains,
@@ -308,19 +307,19 @@ public class ModUndeadMainRegistry
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityBuccaneer.class, "UDBuccaneer", EntityRegistry.findGlobalUniqueEntityId(), 0x382101, 0xc1111a);
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityMummy.class, "UDMummy", EntityRegistry.findGlobalUniqueEntityId(), 0xf9bb3d, 0x2a2300);
-		EntityRegistry.addSpawn(ModUndeadEntityMummy.class, 10, 5, 6, EnumCreatureType.monster,  new BiomeGenBase[] 
+		ModLoader.addSpawn(ModUndeadEntityMummy.class, 10, 5, 6, EnumCreatureType.monster,  new BiomeGenBase[] 
 				{   
 			BiomeGenBase.desert
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityMudman.class, "UDMudman", EntityRegistry.findGlobalUniqueEntityId(), 0x16776b, 0x24311c);
-		EntityRegistry.addSpawn(ModUndeadEntityMudman.class, 10, 5, 6, EnumCreatureType.monster,  new BiomeGenBase[] 
+		ModLoader.addSpawn(ModUndeadEntityMudman.class, 10, 5, 6, EnumCreatureType.monster,  new BiomeGenBase[] 
 				{   
 			BiomeGenBase.swampland
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityCordie.class, "UDCordie", EntityRegistry.findGlobalUniqueEntityId(), 0x004807, 0x411447);
-		EntityRegistry.addSpawn(ModUndeadEntityCordie.class, 10, 1, 4, EnumCreatureType.monster,  new BiomeGenBase[] 
+		ModLoader.addSpawn(ModUndeadEntityCordie.class, 10, 1, 4, EnumCreatureType.monster,  new BiomeGenBase[] 
 				{   
 			BiomeGenBase.mushroomIsland,
 			BiomeGenBase.jungle,
@@ -328,31 +327,31 @@ public class ModUndeadMainRegistry
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityFlare.class, "UDFlare", EntityRegistry.findGlobalUniqueEntityId(), 0x964646, 0xb80000);
-		EntityRegistry.addSpawn(ModUndeadEntityFlare.class, 200, 1, 3, EnumCreatureType.monster, new BiomeGenBase[]
+		ModLoader.addSpawn(ModUndeadEntityFlare.class, 200, 1, 3, EnumCreatureType.monster, new BiomeGenBase[]
 				{
 			BiomeGenBase.hell
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityScorcher.class, "UDScorcher", EntityRegistry.findGlobalUniqueEntityId(), 0xa42c00, 0x350000);
-		EntityRegistry.addSpawn(ModUndeadEntityScorcher.class, 200, 1, 3, EnumCreatureType.monster, new BiomeGenBase[]
+		ModLoader.addSpawn(ModUndeadEntityScorcher.class, 200, 1, 3, EnumCreatureType.monster, new BiomeGenBase[]
 				{
 			BiomeGenBase.hell	
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityHellHound.class, "UDHellHound", EntityRegistry.findGlobalUniqueEntityId(), 0x350000, 0xa5da03);
-		EntityRegistry.addSpawn(ModUndeadEntityHellHound.class, 200, 1, 7, EnumCreatureType.monster, new BiomeGenBase [] 
+		ModLoader.addSpawn(ModUndeadEntityHellHound.class, 200, 1, 7, EnumCreatureType.monster, new BiomeGenBase [] 
 				{
 			BiomeGenBase.hell
 				});
 
 		EntityRegistry.registerGlobalEntityID(ModUndeadEntityEndermark.class, "UDEndermark", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xd800f8);
-		EntityRegistry.addSpawn(ModUndeadEntityEndermark.class, 2, 0, 4, EnumCreatureType.monster, new BiomeGenBase [] 
+		ModLoader.addSpawn(ModUndeadEntityEndermark.class, 2, 0, 4, EnumCreatureType.monster, new BiomeGenBase [] 
 				{
 			BiomeGenBase.sky
 				});
 
 		/*EntityRegistry.registerGlobalEntityID(ModUndeadEntityZkuba.class, "UDZkuba", EntityRegistry.findGlobalUniqueEntityId(), 0xe4e0d3, 0xd0b600);
-		EntityRegistry.addSpawn(ModUndeadEntityZkuba.class, 3, 0, 3, EnumCreatureType.waterCreature, new BiomeGenBase [] 
+		ModLoader.addSpawn(ModUndeadEntityZkuba.class, 3, 0, 3, EnumCreatureType.waterCreature, new BiomeGenBase [] 
 				{
 			BiomeGenBase.river,
 			BiomeGenBase.ocean
@@ -717,6 +716,7 @@ public class ModUndeadMainRegistry
 	@PreInit
 	public void preLoad(FMLPreInitializationEvent evt)
 	{
+		Item.rottenFlesh = new ModUndeadItemRottenFleshReplacement(111, 4, 0.1F, true).setPotionEffect(Potion.hunger.id, 30, 0, 0.8F).setIconCoord(11, 5).setItemName("rottenFlesh");
 		addAudio();
 	}
 
