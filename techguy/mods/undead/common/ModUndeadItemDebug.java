@@ -17,7 +17,11 @@ public class ModUndeadItemDebug extends Item
 		{
 			return 9;
 		}
-		return 9;
+		if(par1 == 2)
+		{
+			return 4;
+		}
+		return 10;
 	}
 
 	public String getTextureFile()

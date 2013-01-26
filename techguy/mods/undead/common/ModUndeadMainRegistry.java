@@ -116,7 +116,25 @@ public class ModUndeadMainRegistry
 	static int cyriteHoeID;
 	static int necrobaneAshID;
 	
+	static int installAchievementID;
+	static int hellHoundTameAchievementID;
+	static int thinkerDoorAchievementID;
+	static int scorcherKillAchievementID;
+	static int rotterKillAchievementID;
+	static int bruteKillAchievementID;
+	static int mummyKillAchievementID;
+	static int frostbiteKillAchievementID;
+	static int cordieKillAchievementID;
+	static int ventKillAchievementID;
+	static int crowbarCraftAchievementID;
+	static int immortiumMineAchievementID;
+	static int summoningCraftAchievementID;
+	static int rottenFleshAchievementID;
+	//static int oneMobDownAchievementID;
+	//static int allMobDownAchievementID;
 
+
+	
 
 
 	public static CreativeTabs undeadCreativeTab = new ModUndeadCreativeTab("undeadPlusCreativeTab");
@@ -188,21 +206,21 @@ public class ModUndeadMainRegistry
 	public static final Item cyriteSword = new ModUndeadItemCyriteSword(cyriteSwordID, toolCyrite).setItemName("cyriteSwordUDP").setIconIndex(81).setCreativeTab(undeadCreativeTab).setCreativeTab(undeadCreativeTab);
 	public static final Item cyriteHoe = new ModUndeadItemCyriteHoe(cyriteHoeID, toolCyrite).setItemName("cyriteHoeUDP").setIconIndex(145).setCreativeTab(undeadCreativeTab).setCreativeTab(undeadCreativeTab);
 
-	public static final Achievement install = new Achievement(1600, "undeadInstall", 15, 0, Item.diamond, null).setSpecial().setIndependent().registerAchievement();
-	public static final Achievement hellHoundTame = new Achievement(1601, "undeadHoundTame", 13, 0, rottenBone, install).registerAchievement();
-	public static final Achievement thinkerDoor = new Achievement(1602, "undeadThinkerDoor", 17, -6, Item.doorWood, install).registerAchievement();
-	public static final Achievement scorcherKill = new Achievement(1603, "undeadScorcher", 17, -4, Item.bucketWater, install).registerAchievement();
-	public static final Achievement rotterKill = new Achievement(1604, "undeadRotter", 17, -2, Item.rottenFlesh, install).registerAchievement();
-	public static final Achievement bruteKill = new Achievement(1605, "undeadBrute", 17, 0, Item.diamond, install).registerAchievement();
-	public static final Achievement mummyKill = new Achievement(1606, "undeadMummy", 17, 2, Item.diamond, install).registerAchievement();
-	public static final Achievement frostbiteKill = new Achievement(1607, "undeadFrostbite", 17, 4, Item.snowball, install).registerAchievement();
-	public static final Achievement cordieKill = new Achievement(1608, "undeadCordie", 17, 6, cordycepsFungus, install).registerAchievement();
-	public static final Achievement ventKill = new Achievement(1609, "undeadVent", 17, 8, new ItemStack(debugItem, 1, 1), install).registerAchievement();
+	public static final Achievement install = new Achievement(installAchievementID, "undeadInstall", 15, 0, Item.diamond, null).setSpecial().setIndependent().registerAchievement();
+	public static final Achievement hellHoundTame = new Achievement(hellHoundTameAchievementID, "undeadHoundTame", 13, 0, rottenBone, install).registerAchievement();
+	public static final Achievement thinkerDoor = new Achievement(thinkerDoorAchievementID, "undeadThinkerDoor", 17, -6, Item.doorWood, install).registerAchievement();
+	public static final Achievement scorcherKill = new Achievement(scorcherKillAchievementID, "undeadScorcher", 17, -4, Item.bucketWater, install).registerAchievement();
+	public static final Achievement rotterKill = new Achievement(rotterKillAchievementID, "undeadRotter", 17, -2, Item.rottenFlesh, install).registerAchievement();
+	public static final Achievement bruteKill = new Achievement(bruteKillAchievementID, "undeadBrute", 17, 0, Item.diamond, install).registerAchievement();
+	public static final Achievement mummyKill = new Achievement(mummyKillAchievementID, "undeadMummy", 17, 2, Item.diamond, install).registerAchievement();
+	public static final Achievement frostbiteKill = new Achievement(frostbiteKillAchievementID, "undeadFrostbite", 17, 4, Item.snowball, install).registerAchievement();
+	public static final Achievement cordieKill = new Achievement(cordieKillAchievementID, "undeadCordie", 17, 6, cordycepsFungus, install).registerAchievement();
+	public static final Achievement ventKill = new Achievement(ventKillAchievementID, "undeadVent", 17, 8, new ItemStack(debugItem, 1, 1), install).registerAchievement();
 
-	public static final Achievement crowbarCraft = new Achievement(1610, "undeadCrowbarCraft", 13, -6, crowbar, install).registerAchievement();
-	public static final Achievement immortiumMine = new Achievement(1611, "undeadImmortiumMine", 13, 2, immortiumShard, install).registerAchievement();
-	public static final Achievement summoningCraft = new Achievement(1612, "undeadSummoningCraft", 13, 4, summoningTable, immortiumMine).registerAchievement();
-	public static final Achievement rottenFlesh = new Achievement(1613, "undeadRottenFlesh", 13, -2, volatiteChestplate, install).registerAchievement();
+	public static final Achievement crowbarCraft = new Achievement(crowbarCraftAchievementID, "undeadCrowbarCraft", 13, -6, crowbar, install).registerAchievement();
+	public static final Achievement immortiumMine = new Achievement(immortiumMineAchievementID, "undeadImmortiumMine", 13, 2, immortiumShard, install).registerAchievement();
+	public static final Achievement summoningCraft = new Achievement(summoningCraftAchievementID, "undeadSummoningCraft", 13, 4, summoningTable, immortiumMine).registerAchievement();
+	public static final Achievement rottenFlesh = new Achievement(rottenFleshAchievementID, "undeadRottenFlesh", 13, -2, volatiteChestplate, install).registerAchievement();
 	
 	//public static final Achievement oneMobDown = new Achievement(1614, "undeadOneMobDown", 15, 7, Item.diamond, null).registerAchievement();
 	//public static final Achievement allMobDown = new Achievement(1615, "undeadAllMobDown", 15, 7, Item.diamond, null).registerAchievement();
@@ -530,8 +548,10 @@ public class ModUndeadMainRegistry
 
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadInstall", "Awesome!");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadInstall.desc", "Install Undead+");
+		
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadHoundTame", "Sit! Stay!");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadHoundTame.desc", "Tame a Hell Hound");
+		
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadThinkerDoor", "Knock, Knock");
 		LanguageRegistry.instance().addStringLocalization("achievement.undeadThinkerDoor.desc", "Kill a Thinker After He Opens A Door");
 
@@ -672,6 +692,22 @@ public class ModUndeadMainRegistry
 		ModUndeadClientTickHandler.updatesEnabled = Boolean.parseBoolean(config.get( "Enable Update Check", "general", true).value);
 		//graveBiomeID = Integer.parseInt(config.getItem( "Grave Biome   ID must be below 256", "general", 25).value);
 		//graveDimensionID = Integer.parseInt(config.getItem( "Grave Dimension   ID must be below 256", "general", 70).value);
+		
+		installAchievementID = Integer.parseInt(config.get( "Achievement - Awesome!", "general", 12500).value);
+		hellHoundTameAchievementID = Integer.parseInt(config.get( "Achievement - Sit! Stay!", "general", 12501).value);
+		thinkerDoorAchievementID = Integer.parseInt(config.get( "Achievement - Knock, Knock", "general", 12502).value);
+		scorcherKillAchievementID = Integer.parseInt(config.get( "Achievement - Extinguisher", "general", 12503).value);
+		rotterKillAchievementID = Integer.parseInt(config.get( "Achievement - Need a Hand?", "general", 12504).value);
+		bruteKillAchievementID = Integer.parseInt(config.get( "Achievement - The Harder They Fall", "general", 12505).value);
+		mummyKillAchievementID = Integer.parseInt(config.get( "Achievement - Reverse The Curse", "general", 12506).value);
+		frostbiteKillAchievementID = Integer.parseInt(config.get( "Achievement - Chill Out!", "general", 12507).value);
+		cordieKillAchievementID = Integer.parseInt(config.get( "Achievement - Fun Guy", "general", 12508).value);
+		ventKillAchievementID = Integer.parseInt(config.get( "Achievement - That Smelly Smell", "general", 12509).value);
+		crowbarCraftAchievementID = Integer.parseInt(config.get( "Achievement - A Free Man", "general", 12510).value);
+		immortiumMineAchievementID = Integer.parseInt(config.get( "Achievement - Shard of Life", "general", 12511).value);
+		summoningCraftAchievementID = Integer.parseInt(config.get( "Achievement - Necromancer", "general", 12512).value);
+		rottenFleshAchievementID = Integer.parseInt(config.get( "Achievement - Acquired Taste", "general", 12513).value);
+
 
 		config.save();
 
