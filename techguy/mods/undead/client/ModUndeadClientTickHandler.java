@@ -13,8 +13,10 @@ import techguy.mods.undead.common.ModUndeadMainRegistry;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.stats.AchievementList;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
@@ -211,6 +213,8 @@ public class ModUndeadClientTickHandler implements ITickHandler
 		{
 			minecraft.thePlayer.removePotionEffect(Potion.poison.id);
 			minecraft.thePlayer.removePotionEffect(Potion.hunger.id);
+			((EntityPlayer)MinecraftServer.getServer().getConfigurationManager().playerEntityList.get(0)).removePotionEffect(Potion.poison.id);
+			((EntityPlayer)MinecraftServer.getServer().getConfigurationManager().playerEntityList.get(0)).removePotionEffect(Potion.hunger.id);
 		}
 	}
 

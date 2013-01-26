@@ -123,7 +123,7 @@ public class ModUndeadMainRegistry
 	public static final Block portalFrame = new ModUndeadBlockGraveDimensionPortalFrame(portalFrameID, 3).setBlockName("portalFrameUDP").setCreativeTab(undeadCreativeTab).setHardness(1.5F).setResistance(10F);
 	public static final Block cordycepsFungusBlock = new ModUndeadBlockCordycepsFungus(cordycepsFungusBlockID, 47).setBlockName("cordycepsFungusBlockUDP");
 	public static final Block summoningTable = new ModUndeadBlockSummoningTable(summoningTableID, 0).setBlockName("summoningTableUDP").setCreativeTab(undeadCreativeTab).setHardness(4.2F).setResistance(10F);
-	//public static final Block gravestone = new ModUndeadBlockGravestone(gravestoneID, 0, net.minecraft.src.ModUndeadTileEntityGravestone.class).setBlockName("gravestoneUDP").setCreativeTab(tabBlock);
+	//public static final Block gravestone = new ModUndeadBlockGravestone(gravestoneID, 0, ModUndeadTileEntityGravestone.class).setBlockName("gravestoneUDP").setCreativeTab(tabBlock);
 	public static final Block dreadWood = new ModUndeadBlockDreadWood(dreadWoodID, 0).setBlockName("dreadWoodUDP").setHardness(1.5F).setStepSound(Block.soundWoodFootstep).setCreativeTab(undeadCreativeTab);
 	public static final Block dreadPlanks = new ModUndeadBlockDreadPlanks(dreadPlanksID, 32).setBlockName("dreadPlanksUDP").setCreativeTab(undeadCreativeTab).setHardness(1F).setStepSound(Block.soundWoodFootstep);
 	public static final Block dreadPlankStairs = new ModUndeadBlockDreadPlankStairs(dreadPlankStairsID, dreadPlanks, 0).setBlockName("dreadPlankStairsUDP").setHardness(1F).setCreativeTab(undeadCreativeTab);
